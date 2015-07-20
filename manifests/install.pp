@@ -28,7 +28,7 @@ class telegraf::install {
           /386/   => "telegraf_${telegraf::version}_i386.deb",
           default => "telegraf_${telegraf::version}_amd64.deb",
         }
-        $package_source = "http://telegraf.s3.amazonaws.com/${package_source_name}"
+        $package_source = "http://get.influxdb.org/telegraf/${package_source_name}"
         exec {
           'telegraf_wget':
             command => "wget ${package_source} -O /tmp/${package_source_name}",
@@ -56,7 +56,7 @@ class telegraf::install {
           /386/   => "telegraf-${telegraf::version}-1.i686.rpm",
           default => "telegraf-${telegraf::version}-1.x86_64.rpm",
         }
-        $package_source = "http://telegraf.s3.amazonaws.com/${package_source_name}"
+        $package_source = "http://get.influxdb.org/telegraf/${package_source_name}"
         exec {
           'telegraf_rpm':
             command => "rpm -ivh ${package_source}",
