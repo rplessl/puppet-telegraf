@@ -7,12 +7,12 @@ class telegraf::params {
   $config_file             = '/etc/opt/telegraf/telegraf.conf'
 
   # [influxdb] section of telegraf.conf
-  $influxdb_url           = '"http://localhost:8086"'
-  $influxdb_database      = '"telegraf"'
-  $influxdb_username      = '"telegraf"'
-  $influxdb_password      = '"metricsmetricsmetricsmetrics"'
+  $influxdb_url           = 'http://localhost:8086'
+  $influxdb_database      = 'telegraf'
+  $influxdb_username      = 'telegraf'
+  $influxdb_password      = 'metricsmetricsmetricsmetrics'
   $influxdb_tags          = undef
 
   # [agent]
-  $agent_hostname         = '"localhost"'
+  $agent_hostname         = 'localhost'
 }
