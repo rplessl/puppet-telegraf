@@ -10,8 +10,7 @@ class telegraf (
   $influxdb_password        = $telegraf::params::influxdb_password,
   $influxdb_tags            = $telegraf::params::influxdb_tags,
   $agent_hostname           = $telegraf::params::agent_hostname,
-
-  inherits telegraf::params {
+) inherits telegraf::params {
 
   class { 'telegraf::install': } ->
   class { 'telegraf::config': }  ~>
