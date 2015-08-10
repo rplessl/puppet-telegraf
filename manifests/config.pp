@@ -50,7 +50,7 @@ class telegraf::config {
   ini_setting { 'agent_hostname':
     section => 'agent',
     setting => 'hostname',
-    value   => $telegraf::agent_hostname,
+    value   => "\"${telegraf::agent_hostname}\"",
   }
 
 }
