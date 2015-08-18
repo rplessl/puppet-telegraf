@@ -4,7 +4,7 @@
 
 ## Description
 
-puppet module to install and configure [telegraf](https://github.com/influxdb/telegraf) (version 0.1.x and newer).
+puppet module to install and configure [telegraf](https://github.com/influxdb/telegraf) (version 0.1.5 and newer).
 
 ## Installation
 
@@ -16,10 +16,24 @@ puppet module to install and configure [telegraf](https://github.com/influxdb/te
 
 These configuration parameter can be set:
 ```
-  $ensure                         = 'installed'
-  $version                        = 'latest'
-  $install_from_repository        = true
-  $config_file                    = '/etc/opt/telegraf/telegraf.conf'
+class telegraf (
+  $ensure                    = 'installed',
+  $version                   = '0.1.5',
+  $install_from_repository   = true,
+  $config_file               = '/etc/opt/telegraf/telegraf.conf',
+
+  # [outputs.influxdb] section of telegraf.conf
+  $outputs_influxdb_url      = 'http://localhost:8086',
+  $outputs_influxdb_database = 'telegraf',
+  $outputs_influxdb_username = 'telegraf',
+  $outputs_influxdb_password = 'metricsmetricsmetricsmetrics',
+
+  # [tags] section of telegraf.conf
+  $tags                      = undef,
+
+  # [agent]
+  $agent_hostname            = 'localhost',
+)
 ```
 
 ## Testing

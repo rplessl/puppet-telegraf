@@ -1,19 +1,63 @@
 # == Class: telegraf
+#
+# Install the InfluxDBś telegraf
+#
+# === Parameters
+#
+# [*ensure*]
+#  handle installation, activation or purging of telegraf
+#
+# [*version*]
+#  handle version of telegraf
+#
+# [*install_from_repository *]
+#  Install telegraf from official repository
+#
+# [*config_file*]
+#  path to the configuration file
+#
+# [*outputs_influxdb_url*]
+#  URL to output sink InfluxDB
+#
+# [*outputs_influxdb_database*]
+#  Database name of output sink InfluxDB
+#
+# [*outputs_influxdb_username*]
+#  Username of output sink InfluxDB
+#
+# [*outputs_influxdb_password*]
+#  Password of output sink InfluxDB
+#
+# [*tags*]
+#  Tags given as a key / value pair slice
+#
+# [*agent_hostname*]
+#  Configures agent hostname for sending it to the sinks
+#
 class telegraf (
-  $ensure                   = $telegraf::params::ensure,
-  $version                  = $telegraf::params::version,
-  $install_from_repository  = $telegraf::params::install_from_repository,
-  $config_file              = $telegraf::params::config_file,
-  $influxdb_url             = $telegraf::params::influxdb_url,
-  $influxdb_database        = $telegraf::params::influxdb_database,
-  $influxdb_username        = $telegraf::params::influxdb_username,
-  $influxdb_password        = $telegraf::params::influxdb_password,
-  $influxdb_tags            = $telegraf::params::influxdb_tags,
-  $agent_hostname           = $telegraf::params::agent_hostname,
-) inherits telegraf::params {
+  $ensure                    = 'installed',
+  $version                   = '0.1.5',
+  $install_from_repository   = true,
+  $config_file               = '/etc/opt/telegraf/telegraf.conf',
 
-  class { 'telegraf::install': } ->
-  class { 'telegraf::config': }  ~>
-  class { 'telegraf::service': } ->
+  # [outputs.influxdb] section of telegraf.conf
+  $outputs_influxdb_url      = 'http://localhost:8086',
+  $outputs_influxdb_database = 'telegraf',
+  $outputs_influxdb_username = 'telegraf',
+  $outputs_influxdb_password = 'metricsmetricsmetricsmetrics',
+
+  # [tags] section of telegraf.conf
+  $tags                      = undef,
+
+  # [agent]
+  $agent_hostname            = 'localhost',
+)
+{
+  class { 'telegraf::install': }
+  ->
+  class { 'telegraf::config': }
+  ~>
+  class { 'telegraf::service': }
+  ->
   Class['telegraf']
 }
