@@ -5,11 +5,11 @@ describe 'telegraf::install', :type => :class do
   it { should create_class('telegraf::install') }
   it { should contain_package('telegraf') }
 
-  context 'installing from a repository' do
+  context 'installing from s3' do
     let(:pre_condition) {
       'class{"telegraf":
         ensure => "installed",
-        install_from_repository => true,
+        install_from_repository => false,
       }'
     }
     context 'on debian' do
