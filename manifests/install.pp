@@ -20,7 +20,7 @@ class telegraf::install {
     }
   }
 
-  if ((!$telegraf::install_from_repository) and ("$my_package_ensure" =~ /present|installed/ )) {
+  if ((!$telegraf::install_from_repository) and ($my_package_ensure =~ /present|installed/ )) {
     # package source and provider
     case $::osfamily {
       'Debian': {
@@ -29,26 +29,15 @@ class telegraf::install {
           default => "telegraf_${telegraf::version}_amd64.deb",
         }
         $package_source = "http://get.influxdb.org/telegraf/${package_source_name}"
-        exec {
-          'telegraf_wget':
-            command => "wget ${package_source} -O /tmp/${package_source_name}",
-            path    => ['/bin', '/usr/bin'],
-            unless  => 'dpkg --list telegraf';
-
-          'telegraf_dpkg':
-            command => "sudo dpkg -i /tmp/${package_source_name}",
-            path    => ['/bin', '/sbin', '/usr/bin'],
-            require => [ Exec['telegraf_wget'] ];
-
-          'telegraf_rm':
-            command => "rm /tmp/${package_source_name}",
-            path    => ['/bin', '/usr/bin'],
-            require => [ Exec['telegraf_dpkg'] ];
-
-          'telegraf_from_web':
-            command => "echo Installed ${package_source_name} on `date --rfc-2822` > /opt/telegraf/versions/telegraf_from_web",
-            path    => ['/bin', '/usr/bin'],
-            require => [ Exec['telegraf_dpkg'] ];
+        wget::fetch { 'telegraf':
+          source      => $package_source,
+          destination => "/tmp/${package_source_name}"
+        }
+        package { 'telegraf':
+          ensure   => $my_package_ensure,
+          provider => 'dpkg',
+          source   => "/tmp/${package_source_name}",
+          require  => Wget::Fetch['telegraf'],
         }
       }
       'RedHat', 'Amazon': {
