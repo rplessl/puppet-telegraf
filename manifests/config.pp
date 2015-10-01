@@ -9,7 +9,7 @@
 class telegraf::config {
 
   file { '/etc/opt/telegraf/telegraf.conf':
-    ensure  => $telegraf::ensure,
+    ensure  => file,
     content => template('telegraf/telegraf.conf.erb'),
     mode    => '0640',
     owner   => 'root',
