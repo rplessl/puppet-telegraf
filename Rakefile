@@ -1,15 +1,47 @@
-require 'bundler'
-Bundler.require(:rake)
-
-require 'rubygems'
-require 'puppetlabs_spec_helper/rake_tasks'
 require 'puppet-lint/tasks/puppet-lint'
+require 'puppet-syntax/tasks/puppet-syntax'
+require 'puppet/vendor/semantic/lib/semantic'
+require 'puppetlabs_spec_helper/rake_tasks'
 
-Rake::Task[:lint].clear
-PuppetLint::RakeTask.new :lint do |config|
-  config.ignore_paths = ["modules/**/**/*.pp","pkg/**/**/*.pp"]
-  config.log_format = '%{path}:%{linenumber}:%{KIND}: %{message}'
-  config.disable_checks = [ "80chars", 'autoloader_layout', 'class_inherits_from_params_class']
+# These gems aren't always present, for instance
+# on Travis with --without development
+begin
+  require 'puppet_blacksmith/rake_tasks'
+rescue LoadError
 end
 
-task :default => [:spec, :lint]
+Rake::Task[:lint].clear
+
+PuppetLint.configuration.fail_on_warnings = true
+PuppetLint.configuration.log_format = "%{path}:%{linenumber}:%{check}:%{KIND}:%{message}"
+PuppetLint.configuration.relative = true
+PuppetLint.configuration.send('disable_80chars')
+PuppetLint.configuration.send('disable_class_parameter_defaults')
+PuppetLint.configuration.send('disable_class_inherits_from_params_class')
+
+exclude_paths = [
+  "bundle/**/*",
+  "pkg/**/*",
+  "vendor/**/*",
+  "spec/**/*",
+  "modules/**/*",
+]
+PuppetLint.configuration.ignore_paths = exclude_paths
+PuppetSyntax.exclude_paths = exclude_paths
+
+desc "Run acceptance tests"
+RSpec::Core::RakeTask.new(:acceptance) do |t|
+  t.pattern = 'spec/acceptance'
+end
+
+task :metadata do
+  sh "metadata-json-lint metadata.json"
+end
+
+desc "Run syntax, lint, and spec tests."
+task :test => [
+  :syntax,
+  :lint,
+  :spec,
+  :metadata,
+]

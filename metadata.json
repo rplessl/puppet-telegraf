@@ -1,5 +1,5 @@
 {
-  "name": "rplessl-telegraf",
+  "name": "puppet-telegraf",
   "version": "0.1.5",
   "source": "https://github.com/rplessl/puppet-telegraf",
   "author": "Roman Plessl",
@@ -51,7 +51,13 @@
     }
   ],
   "requirements": [
-    { "name": "pe", "version_requirement": "3.2.x" },
-    { "name": "puppet", "version_requirement": "3.x" }
+    {
+      "name": "pe",
+      "version_requirement": ">=3.5.0 <5.0.0"
+    },
+    {
+      "name": "puppet",
+      "version_requirement": ">=3.5.0 <5.0.0"
+    }
   ]
 }

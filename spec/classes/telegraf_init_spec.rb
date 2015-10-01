@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe 'telegraf', :type => 'class' do
-
-  it { should create_class('telegraf') }
-
+describe 'telegraf' do
+  context 'with defaults for all parameters' do
+      it { should contain_class('telegraf') }
+  end
 end

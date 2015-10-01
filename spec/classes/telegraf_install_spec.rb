@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe 'telegraf::install', :type => :class do
 
-  it { should create_class('telegraf::install') }
+  it { should contain_class('telegraf::install') }
   it { should contain_package('telegraf') }
 
   context 'installing from s3' do
