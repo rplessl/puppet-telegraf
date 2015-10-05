@@ -5,7 +5,7 @@ puppetversion = ENV.key?('PUPPET_GEM_VERSION') ? "= #{ENV['PUPPET_GEM_VERSION']}
 group :test do
   gem "rake"
   gem "puppet", puppetversion
-  gem "rspec-puppet", :git => 'https://github.com/rodjek/rspec-puppet.git'
+  gem "rspec-puppet"
   gem "puppetlabs_spec_helper"
   gem "metadata-json-lint"
 end
