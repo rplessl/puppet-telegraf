@@ -34,6 +34,9 @@
 # [*agent_hostname*]
 #  Configures agent hostname for sending it to the sinks
 #
+# [*plugins*]
+#  Hash of plugins to enable and any relevant options
+#
 class telegraf (
   $ensure                    = 'installed',
   $version                   = '0.1.5',
@@ -51,13 +54,13 @@ class telegraf (
 
   # [agent]
   $agent_hostname            = 'localhost',
+
+  # plugins
+  $plugins                   = undef,
 )
 {
-  class { 'telegraf::install': }
-  ->
-  class { 'telegraf::config': }
-  ~>
-  class { 'telegraf::service': }
-  ->
+  class { 'telegraf::install': } ->
+  class { 'telegraf::config': } ~>
+  class { 'telegraf::service': } ->
   Class['telegraf']
 }
