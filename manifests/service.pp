@@ -1,7 +1,7 @@
 # == Class: telegraf::service
 # DO NO CALL DIRECTLY
 class telegraf::service {
-  $service_ensure = $telegraf::ensure
+  $service_ensure = ${telegraf::ensure}
   case $service_ensure {
     true: {
       $my_service_ensure = 'running'
@@ -19,10 +19,21 @@ class telegraf::service {
       $my_service_ensure = 'running'
     }
   }
+
+  # use systemd for Debian jessie
+  case $::lsbdistcodename {
+    'jessie': {
+      $provider = 'systemd'
+    }
+    default: {
+      $provider = undef
+    }
+  }
+
   service { 'telegraf':
     ensure     => 'running',
     enable     => true,
     hasrestart => true,
-    status     => '/usr/bin/pgrep -u telegraf -f "/opt/telegraf/telegraf "'
+    provider   => $provider,
   }
 }

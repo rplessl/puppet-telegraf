@@ -1,6 +1,6 @@
 # == Class: telegraf
 #
-# Install the InfluxDBś telegraf
+# Install the InfluxDBs telegraf
 #
 # === Parameters
 #
@@ -13,9 +13,12 @@
 # [*install_from_repository *]
 #  Install telegraf from official repository
 #
-# [*config_file*]
-#  path to the configuration file
+# [*config_base_file*]
+#  path to the base configuration file
 #
+# [*config_directory *]
+#  path to the configuration directory (snippets)
+##
 # [*outputs_influxdb_url*]
 #  URL to output sink InfluxDB
 #
@@ -36,9 +39,10 @@
 #
 class telegraf (
   $ensure                    = 'installed',
-  $version                   = '0.1.5',
+  $version                   = '0.2.0',
   $install_from_repository   = true,
-  $config_file               = '/etc/opt/telegraf/telegraf.conf',
+  $config_base_file          = '/etc/opt/telegraf/telegraf.conf',
+  $config_directory          = '/etc/opt/telegraf/telegraf.d',
 
   # [outputs.influxdb] section of telegraf.conf
   $outputs_influxdb_url      = 'http://localhost:8086',
