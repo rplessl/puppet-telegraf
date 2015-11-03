@@ -1,5 +1,3 @@
 fixtures:
-  repositories:
-    inifile: "https://github.com/puppetlabs/puppetlabs-inifile"
   symlinks:
     telegraf: "#{source_dir}"
