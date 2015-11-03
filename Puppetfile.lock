@@ -2,9 +2,7 @@ FORGE
   remote: https://forgeapi.puppetlabs.com
   specs:
     maestrodev-wget (1.7.1)
-    puppetlabs-inifile (1.2.0)
 
 DEPENDENCIES
   maestrodev-wget (>= 1.6.0)
-  puppetlabs-inifile (>= 1.0.0)
 

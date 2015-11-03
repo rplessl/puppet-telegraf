@@ -1,7 +1,7 @@
 # == Class: telegraf::install
 # DO NO CALL DIRECTLY
 class telegraf::install {
-  $package_ensure = $telegraf::ensure
+  $package_ensure = ${telegraf::ensure}
   case $package_ensure {
     true:     {
       $my_package_ensure = 'present'

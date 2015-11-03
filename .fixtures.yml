@@ -1,6 +1,4 @@
 ---
 fixtures:
-  repositories:
-    inifile: https://github.com/puppetlabs/puppetlabs-inifile
   symlinks:
     influxdb: "#{source_dir}"

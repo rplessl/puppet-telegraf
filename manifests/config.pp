@@ -8,12 +8,19 @@
 # DO NO CALL DIRECTLY
 class telegraf::config {
 
-  file { '/etc/opt/telegraf/telegraf.conf':
+  file { "${telegraf::config_base_file}":
     ensure  => file,
     content => template('telegraf/telegraf.conf.erb'),
     mode    => '0640',
     owner   => 'root',
     group   => 'telegraf',
+  }
+
+  file { "${telegraf::config_directory}":
+    ensure => directory,
+    mode   => '0750',
+    owner  => 'root',
+    group  => 'telegraf',
   }
 
 }

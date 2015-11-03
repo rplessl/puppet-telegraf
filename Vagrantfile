@@ -21,17 +21,17 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
   end
 
-  config.vm.define "debian6", autostart: false do |debian6|
-    debian6.vm.box = "puppetlabs/debian-6.0.10-64-puppet"
-    debian6.vm.provision :puppet do |puppet|
+  config.vm.define "debian", autostart: false do |debian|
+    debian.vm.box = "puppetlabs/debian-7.8-64-puppet"
+    debian.vm.provision :puppet do |puppet|
       puppet.manifests_path = "tests"
       puppet.manifest_file  = "vagrant.pp"
       puppet.options        = ["--modulepath", "/tmp/puppet-modules"]
     end
   end
 
-  config.vm.define "debian", autostart: false do |debian|
-    debian.vm.box = "puppetlabs/debian-7.8-64-puppet"
+  config.vm.define "debian8", autostart: false do |debian8|
+    debian.vm.box = "debian-8.0-jessie-64-shrinked-puppet"
     debian.vm.provision :puppet do |puppet|
       puppet.manifests_path = "tests"
       puppet.manifest_file  = "vagrant.pp"
