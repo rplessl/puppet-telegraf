@@ -18,9 +18,12 @@
 #
 # [*config_directory *]
 #  path to the configuration directory (snippets)
-##
-# [*outputs_influxdb_url*]
-#  URL to output sink InfluxDB
+#
+# [*outputs_influxdb_enabled*]
+#  Activate InfluxDB as a output Plugin
+#
+# [*outputs_influxdb_urls*]
+#  URLs to output sinks InfluxDB
 #
 # [*outputs_influxdb_database*]
 #  Database name of output sink InfluxDB
@@ -45,7 +48,8 @@ class telegraf (
   $config_directory          = '/etc/opt/telegraf/telegraf.d',
 
   # [outputs.influxdb] section of telegraf.conf
-  $outputs_influxdb_url      = 'http://localhost:8086',
+  $outputs_influxdb_enabled  = true,
+  $outputs_influxdb_urls     = ['http://localhost:8086'],
   $outputs_influxdb_database = 'telegraf',
   $outputs_influxdb_username = 'telegraf',
   $outputs_influxdb_password = 'metricsmetricsmetricsmetrics',

@@ -24,7 +24,8 @@ class telegraf (
   $config_directory          = '/etc/opt/telegraf/telegraf.d',
 
   # [outputs.influxdb] section of telegraf.conf
-  $outputs_influxdb_url      = 'http://localhost:8086',
+  $outputs_inflxudb_enabled  = true,
+  $outputs_influxdb_urls     = ['http://localhost:8086'],
   $outputs_influxdb_database = 'telegraf',
   $outputs_influxdb_username = 'telegraf',
   $outputs_influxdb_password = 'metricsmetricsmetricsmetrics',
