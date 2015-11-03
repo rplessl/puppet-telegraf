@@ -1,7 +1,7 @@
 # == Class: telegraf::service
 # DO NO CALL DIRECTLY
 class telegraf::service {
-  $service_ensure = ${telegraf::ensure}
+  $service_ensure = $ensure
   case $service_ensure {
     true: {
       $my_service_ensure = 'running'

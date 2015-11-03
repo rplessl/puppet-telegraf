@@ -8,7 +8,7 @@
 # DO NO CALL DIRECTLY
 class telegraf::config {
 
-  file { "${telegraf::config_base_file}":
+  file { $config_base_file:
     ensure  => file,
     content => template('telegraf/telegraf.conf.erb'),
     mode    => '0640',
@@ -16,7 +16,7 @@ class telegraf::config {
     group   => 'telegraf',
   }
 
-  file { "${telegraf::config_directory}":
+  file { $config_directory:
     ensure => directory,
     mode   => '0750',
     owner  => 'root',
