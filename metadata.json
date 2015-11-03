@@ -1,11 +1,11 @@
 {
-  "name": "rplessl-telegraf",
-  "version": "0.1.5",
+  "name": "puppet-telegraf",
+  "version": "0.2.0",
   "source": "https://github.com/rplessl/puppet-telegraf",
   "author": "Roman Plessl",
-  "license": "MIT License",
-  "summary": "Setup and manage influxdb's telegraf 0.1.5 and newer",
-  "description": "Setup and manage influxdb's telegraf 0.1.5 and newer",
+  "license": "MIT",
+  "summary": "Setup and manage influxdb's telegraf 0.2.0 and newer",
+  "description": "Setup and manage influxdb's telegraf 0.2.0 and newer",
   "source": "git://github.com/rplessl/puppet-telegraf.git",
   "project_page": "https://github.com/rplessl/puppet-telegraf",
   "issues_url": "https://github.com/rplessl/puppet-telegraf/issues",
@@ -51,7 +51,13 @@
     }
   ],
   "requirements": [
-    { "name": "pe", "version_requirement": "3.2.x" },
-    { "name": "puppet", "version_requirement": "3.x" }
+    {
+      "name": "pe",
+      "version_requirement": ">=3.5.0 <5.0.0"
+    },
+    {
+      "name": "puppet",
+      "version_requirement": ">=3.5.0 <5.0.0"
+    }
   ]
 }
