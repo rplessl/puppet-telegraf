@@ -44,7 +44,7 @@ describe 'telegraf' do
         :operatingsystem => 'OmniOS',
       }}
 
-      it { expect { is_expected.to contain_package('telegraf') }.to raise_error(Puppet::Error, /OS family Solaris not supported/) }
+      it { expect { is_expected.to contain_package('telegraf') }.to raise_error(Puppet::Error, /Only supports Debian \/ Ubuntu or RedHat and not/) }
     end
   end
 end
