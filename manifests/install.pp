@@ -59,7 +59,7 @@ class telegraf::install {
         }
       }
       default: {
-        fail('Only supports Debian / Ubuntu or RedHat $::osfamily')
+        fail('Only supports Debian, Ubuntu or RedHat, RedHat Clones')
       }
     }
   }
