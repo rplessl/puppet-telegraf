@@ -1,44 +1,87 @@
-# puppet-telegraf
+## Overview
 
 [![Build Status](https://travis-ci.org/rplessl/puppet-telegraf.png)](https://travis-ci.org/rplessl/puppet-telegraf)
 
-## Description
+This Puppet module installs and manages [InfluxDB Telegraf](https://github.com/influxdb/telegraf). 
 
-puppet module to install and configure [telegraf](https://github.com/influxdb/telegraf) (version 0.2.0 and newer).
+Use this puppet module to install and configure [InfluxDB Telegraf](https://github.com/influxdb/telegraf) with version 0.2.0 and newer.
 
-## Installation
+## Module Description
 
-`puppet module install --modulepath /path/to/puppet/modules puppet-telegraf`
+The module installs the telegraf package from the provided repositories and installs the basic configuration file and reconfigures this setup based on your whishes.
 
-## Usage
+Supported Linux distributions are Debian based (Ubuntu, Debian) and RedHat based (CentOS, RHEL).
 
-`class { 'telegraf': }`
+The installed package for telegraf will be fetched from
+  a) the provided package from get.influxdb.com or
+  b) the provided package from your own repository (apt repository, aptly, yum)
 
-These configuration parameter can be set:
+## Setup
+
+### Setup Requirements
+
+puppet-telegraf requires only the [wget](https://forge.puppetlabs.com/maestrodev/wget) module when the parameter `install_from_repository` is set to false. Furthermore the `stdlib` module is required.
+
+### Beginning with telegraf
+
+Include the class and set the InfluxDB parameters.
+
 ```
-class telegraf (
-  $ensure                    = 'installed',
-  $version                   = '0.2.0',
-  $install_from_repository   = true,
-  $config_base_file          = '/etc/opt/telegraf/telegraf.conf',
-  $config_directory          = '/etc/opt/telegraf/telegraf.d',
-
-  # [outputs.influxdb] section of telegraf.conf
-  $outputs_inflxudb_enabled  = true,
-  $outputs_influxdb_urls     = ['http://localhost:8086'],
-  $outputs_influxdb_database = 'telegraf',
-  $outputs_influxdb_username = 'telegraf',
-  $outputs_influxdb_password = 'metricsmetricsmetricsmetrics',
-
-  # [tags] section of telegraf.conf
-  $tags                      = undef,
-
-  # [agent]
-  $agent_hostname            = 'localhost',
-)
+class { 'telegraf':
+    install_from_repository   => false,
+    outputs_influxdb_enabled  => true,
+    outputs_influxdb_urls     => ['http://localhost:8086'],
+    outputs_influxdb_database => 'telegraf',
+    outputs_influxdb_username => 'telegraf',
+    outputs_influxdb_password => 'metricsmetricsmetricsmetrics',
+}
 ```
 
-## Testing
+This telegraf module supports the following configuration options:
+
+```
+class { 'telegraf':
+    ensure                    => 'installed',
+    version                   => '0.2.0',
+    install_from_repository   => true,
+    config_base_file          => '/etc/opt/telegraf/telegraf.conf',
+    config_directory          => '/etc/opt/telegraf/telegraf.d',
+
+    # [outputs.influxdb] section of telegraf.conf
+    outputs_influxdb_enabled  => true,
+    outputs_influxdb_urls     => ['http://localhost:8086'],
+    outputs_influxdb_database => 'telegraf',
+    outputs_influxdb_username => 'telegraf',
+    outputs_influxdb_password => 'metricsmetricsmetricsmetrics',
+
+    # [tags] section of telegraf.conf
+    tags                      => {
+      virtual            => $::virtual,
+      lsbdistdescription => $::lsbdistdescription,
+      environment        => $::my_own_facter_environment,
+      location           => $::my_own_facter_location,
+    }
+
+    # [agent]
+    agent_hostname            => $::hostname,
+}
+```
+
+## Development 
+
+1. Fork it (https://github.com/rplessl/puppet-telegraf/fork)
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create a new Pull Request
+
+Wish: Make sure your Pull Requests passes the Rspec tests.
+
+## Testing Code Enhancement (rspec)
+
+Testing is done with [rspec](http://rspec-puppet.com/).
+
+## Testing Setup with Vagrant
 
 Install and setup vagrant [https://docs.vagrantup.com/v2/installation/index.html](as described here).
 
@@ -57,3 +100,15 @@ bundle install
 bundle exec librarian-puppet install
 vagrant up
 ```
+
+## License
+
+Licensed under the MIT License.
+Copyright 2015 Roman Plessl (@rplessl)
+
+See [LICENSE](https://github.com/rplessl/puppet-telegraf/blob/master/LICENSE) File
+
+
+
+
+
