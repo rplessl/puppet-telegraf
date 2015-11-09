@@ -1,5 +1,7 @@
 # == Class: telegraf::install
-# DO NO CALL DIRECTLY
+#
+# This class is called from gitlab for install.
+#
 class telegraf::install {
   $package_ensure = $telegraf::ensure
   case $package_ensure {
@@ -23,7 +25,7 @@ class telegraf::install {
   if ((!$telegraf::install_from_repository) and ($my_package_ensure =~ /present|installed/ )) {
     # package source and provider
     case $::osfamily {
-      'Debian': {
+      'debian': {
         $package_source_name = $::architecture ? {
           /386/   => "telegraf_${telegraf::version}_i386.deb",
           default => "telegraf_${telegraf::version}_amd64.deb",
@@ -40,7 +42,7 @@ class telegraf::install {
           require  => Wget::Fetch['telegraf'],
         }
       }
-      'RedHat', 'Amazon': {
+      'redhat': {
         $package_source_name = $::architecture ? {
           /386/   => "telegraf-${telegraf::version}-1.i686.rpm",
           default => "telegraf-${telegraf::version}-1.x86_64.rpm",
@@ -59,7 +61,7 @@ class telegraf::install {
         }
       }
       default: {
-        fail('Only supports Debian, Ubuntu or RedHat, RedHat Clones')
+        fail("OS family ${::osfamily} not supported")
       }
     }
   }

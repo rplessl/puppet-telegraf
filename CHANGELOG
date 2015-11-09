@@ -1,10 +1,13 @@
-## v0.0.2 [2015-11-03]
+## v0.1.91 [2015-11-09]
 
-* New Upstream Release and Interface for InfluxDB Telegraf 0.2.0
+* More Rake Tasks -- @rplessl
+* More Code Coverage -- @rplessl
 
-* Snipplets Mechanism with
-  /etc/opt/telegraf/telegraf.d
+## v0.1.90 [2015-11-03]
+
+* New Upstream Release and Interface for InfluxDB Telegraf 0.2.0 -- @rplessl
+* Snipplets Mechanism with /etc/opt/telegraf/telegraf.d -- @rplessl
 
 ## v0.0.1 [2015-10-01]
 
-* Initial release
+* Initial release -- @rplessl

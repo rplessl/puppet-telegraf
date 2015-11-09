@@ -4,7 +4,7 @@
 
 ## Description
 
-puppet module to install and configure [telegraf](https://github.com/influxdb/telegraf) (version 0.1.5 and newer).
+puppet module to install and configure [telegraf](https://github.com/influxdb/telegraf) (version 0.2.0 and newer).
 
 ## Installation
 

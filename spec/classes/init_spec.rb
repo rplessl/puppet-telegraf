@@ -1,6 +1,8 @@
 require 'spec_helper'
+require 'debugger'
 
 describe 'telegraf' do
+
   context 'supported operating systems' do
     describe "telegraf class without any parameters on Ubuntu 14.04" do
       let(:params) {{ }}
@@ -37,14 +39,16 @@ describe 'telegraf' do
       it { is_expected.to contain_class('telegraf') }
     end
   end
-  context 'unsupported operating system' do
-    describe 'telegraf class without any parameters on Solaris/OmniOS' do
-      let(:facts) {{
-        :osfamily        => 'Solaris',
-        :operatingsystem => 'OmniOS',
-      }}
 
-      it { expect { is_expected.to contain_package('telegraf') }.to raise_error(Puppet::Error, /Only supports Debian, Ubuntu or RedHat, RedHat Clones/) }
-    end
+  context 'telegraf specific parameters' do
+    let(:params) {{ }}
+    let(:facts) {{
+      :osfamily => 'debian',
+      :lsbdistid => 'ubuntu',
+      :lsbdistcodename => 'trusty',
+    }}
+
+    it { is_expected.to contain_file('/etc/opt/telegraf/telegraf.conf') }
+    it { is_expected.to contain_file('/etc/opt/telegraf/telegraf.d') }
   end
 end
