@@ -1,10 +1,23 @@
 ## Overview
-
 [![Build Status](https://travis-ci.org/rplessl/puppet-telegraf.png)](https://travis-ci.org/rplessl/puppet-telegraf)
+[![rplessl-telegraf](https://img.shields.io/puppetforge/r/rplessl/telegraf.svg)](https://forge.puppetlabs.com/rplessl/telegraf)
 
 This Puppet module installs and manages [InfluxDB Telegraf](https://github.com/influxdb/telegraf). 
 
 Use this puppet module to install and configure [InfluxDB Telegraf](https://github.com/influxdb/telegraf) with version 0.2.0 and newer.
+
+#### Table of Contents
+
+1. [Overview](#overview)
+2. [Module Description - What the module does and why it is useful](#module-description)
+3. [Setup - The basics of getting started with telegraf](#setup)
+    * [Setup requirements](#setup-requirements)
+    * [Beginning with telegraf](#beginning-with-telegraf)
+4.  [Development - Guide for contributing to the module](#development)
+5.  [Testing - Guide to test the module](#testing)
+    * [Testing Code with rspec tests](#testing-code-enhancement-rspec)
+    * [Testing Code with Vagrant setup](#testing-setup-with-vagrant)
+6.  [License](#License)
 
 ## Module Description
 
@@ -77,11 +90,13 @@ class { 'telegraf':
 
 Wish: Make sure your Pull Requests passes the Rspec tests.
 
-## Testing Code Enhancement (rspec)
+## Testing
+
+### Testing Code Enhancement (rspec)
 
 Testing is done with [rspec](http://rspec-puppet.com/).
 
-## Testing Setup with Vagrant
+### Testing Setup with Vagrant
 
 Install and setup vagrant [https://docs.vagrantup.com/v2/installation/index.html](as described here).
 
