@@ -109,15 +109,36 @@
 
 # Read metrics about disk usage by mount point
 [disk]
-  # no configuration
+  # no active configuration changes
+  #
+  # By default, telegraf gather stats for all mountpoints.
+  # Setting mountpoints will restrict the stats to the specified mountpoints.
+  # Mountpoints=["/"]
 
 # Read metrics about disk IO by device
 [io]
-  # no configuration
+  # no active configuration changes
+  #
+  # By default, telegraf will gather stats for all devices including
+  # disk partitions.
+  # Setting devices will restrict the stats to the specified devcies.
+  # Devices=["sda","sdb"]
+  # Uncomment the following line if you do not need disk serial numbers.
+  # SkipSerialNumber = true
 
 # Read metrics about memory usage
 [mem]
   # no configuration
+
+# Read metrics about network usage
+[net]
+  # no active configuration changes
+  #
+  # By default, telegraf gathers stats from any up interface (excluding loopback)
+  # Setting interfaces will tell it to gather these explicit interfaces,
+  # regardless of status.
+  #
+  # interfaces = ["eth0", ... ]
 
 # Read metrics about swap memory usage
 [swap]
@@ -126,5 +147,3 @@
 # Read metrics about system load & uptime
 [system]
   # no configuration
-
-
