@@ -69,11 +69,11 @@
   # Multiple urls can be specified for InfluxDB cluster support. Server to
   # write to will be randomly chosen each interval.
   # urls = ["http://localhost:8086"] # required.
-  urls = "<%= @outputs_influxdb_urls %>"
+  urls = <%= @outputs_influxdb_urls %>
 
   # The target database for metrics. This database must already exist
   # database = "telegraf" # required.
-  database = "<%= @outputs_influxdb_databae %>"
+  database = "<%= @outputs_influxdb_database %>"
 
   # Precision of writes, valid values are n, u, ms, s, m, and h
   # note: using second precision greatly helps InfluxDB compression
