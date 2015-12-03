@@ -11,18 +11,12 @@ class telegraf::install {
     false:    {
       $my_package_ensure = 'absent'
     }
-    'absent': {
-      $my_package_ensure = 'absent'
-    }
-    'purged': {
-      $my_package_ensure = 'purged'
-    }
     default:  {
       $my_package_ensure = $package_ensure
     }
   }
 
-  if ((!$telegraf::install_from_repository) and ($my_package_ensure =~ /present|installed/ )) {
+  if ((!$telegraf::install_from_repository) and ($my_package_ensure =~ /present|installed|latest/ )) {
     # package source and provider
     case $::osfamily {
       'debian': {
