@@ -40,6 +40,7 @@ class telegraf::plugins::opentsdb (
     mode    => '0644',
     owner   => 'root',
     group   => 'telegraf',
+    notify  => Service['telegraf'];
   }
 
 }

@@ -26,6 +26,7 @@ class telegraf::plugins::puppetagent (
     mode    => '0644',
     owner   => 'root',
     group   => 'telegraf',
+    notify  => Service['telegraf'];
   }
 
 }

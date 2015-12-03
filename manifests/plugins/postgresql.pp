@@ -27,6 +27,7 @@ class telegraf::plugins::postgresql (
     mode    => '0644',
     owner   => 'root',
     group   => 'telegraf',
+    notify  => Service['telegraf'];
   }
 
 }

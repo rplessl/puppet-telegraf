@@ -27,6 +27,7 @@ class telegraf::plugins::mysql (
     mode    => '0644',
     owner   => 'root',
     group   => 'telegraf',
+    notify  => Service['telegraf'];
   }
 
 }
