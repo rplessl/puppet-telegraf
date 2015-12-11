@@ -41,20 +41,12 @@
 #  Configures agent hostname for sending it to the sinks
 #
 class telegraf (
-<<<<<<< HEAD
-  $ensure                    = 'installed',
-  $version                   = '0.2.4',
-  $install_from_repository   = true,
-  $config_base_file          = '/etc/opt/telegraf/telegraf.conf',
-  $config_directory          = '/etc/opt/telegraf/telegraf.d',
-=======
   $ensure                     = $telegraf::params::ensure,
   $version                    = $telegraf::params::version,
   $install_from_repository    = $telegraf::params::install_from_repository,
   $config_template            = $telegraf::params::config_template,
   $config_base_file           = $telegraf::params::config_base_file,
   $config_directory           = $telegraf::params::config_directory,
->>>>>>> 6d1dc91d3b9b31e9c9925ba86df13d0edeabd3db
 
   # [outputs.influxdb] section of telegraf.conf
   $outputs_influxdb_enabled   = $telegraf::params::outputs_influxdb_enabled,
@@ -72,9 +64,9 @@ class telegraf (
 
   # [[plugins.cpu]]
   $cpu_percpu                 = $telegraf::params::cpu_percpu,
-  $cpu_totalcpu                = $telegraf::params::cpu_totalcpu,
+  $cpu_totalcpu               = $telegraf::params::cpu_totalcpu,
   $cpu_drop                   = $telegraf::params::cpu_drop,
-  
+
   # [[plugins.disk]]
   $disk_mountpoints           = $telegraf::params::mountpoints
 
