@@ -18,7 +18,7 @@ class telegraf::params {
   $tags                      = undef
 
   # [agent]
-  $agent_hostname            = 'localhost'
+  $agent_hostname            = $::hostname,
   $agent_interval            = '10s'
 
   # [[plugins.cpu]]
