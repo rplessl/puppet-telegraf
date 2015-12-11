@@ -41,25 +41,36 @@
 #  Configures agent hostname for sending it to the sinks
 #
 class telegraf (
-  $ensure                    = 'installed',
-  $version                   = '0.2.0',
-  $install_from_repository   = true,
-  $config_base_file          = '/etc/opt/telegraf/telegraf.conf',
-  $config_directory          = '/etc/opt/telegraf/telegraf.d',
+  $ensure                     = $telegraf::params::ensure,
+  $version                    = $telegraf::params::version,
+  $install_from_repository    = $telegraf::params::install_from_repository,
+  $config_template            = $telegraf::params::config_template,
+  $config_base_file           = $telegraf::params::config_base_file,
+  $config_directory           = $telegraf::params::config_directory,
 
   # [outputs.influxdb] section of telegraf.conf
-  $outputs_influxdb_enabled  = true,
-  $outputs_influxdb_urls     = ['http://localhost:8086'],
-  $outputs_influxdb_database = 'telegraf',
-  $outputs_influxdb_username = 'telegraf',
-  $outputs_influxdb_password = 'metricsmetricsmetricsmetrics',
+  $outputs_influxdb_enabled   = $telegraf::params::outputs_influxdb_enabled,
+  $outputs_influxdb_urls      = $telegraf::params::outputs_influxdb_urls,
+  $outputs_influxdb_database  = $telegraf::params::outputs_influxdb_database,
+  $outputs_influxdb_username  = $telegraf::params::outputs_influxdb_username,
+  $outputs_influxdb_password  = $telegraf::params::outputs_influxdb_password,
 
   # [tags] section of telegraf.conf
-  $tags                      = undef,
+  $tags                       = $telegraf::params::tags,
 
   # [agent]
-  $agent_hostname            = 'localhost',
-)
+  $agent_hostname             = $telegraf::params::agent_hostname,
+  $agent_interval             = $telegraf::params::agent_interval,
+
+  # [[plugins.cpu]]
+  $cpu_percpu                 = $telegraf::params::cpu_percpu,
+  $cpu_totalcpu                = $telegraf::params::cpu_totalcpu,
+  $cpu_drop                   = $telegraf::params::cpu_drop,
+  
+  # [[plugins.disk]]
+  $disk_mountpoints           = $telegraf::params::mountpoints
+
+) inherits telegraf::params
 {
   class { 'telegraf::install': }
   ->

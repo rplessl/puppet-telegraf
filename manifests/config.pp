@@ -10,7 +10,7 @@ class telegraf::config {
 
   file { $telegraf::config_base_file:
     ensure  => file,
-    content => template('telegraf/telegraf.conf.erb'),
+    content => template($::telegraf::config_template),
     mode    => '0644',
     owner   => 'root',
     group   => 'telegraf',

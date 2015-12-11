@@ -26,7 +26,7 @@
 #   dc = "us-east-1"
 <% if @tags -%>
 [tags]
-<%   @tags.each do |key, value| -%>
+<%   @tags.sort.each do |key, value| -%>
    <%= key %> = "<%= value %>"
 <%   end -%>
 <% end -%>
@@ -69,7 +69,7 @@
   # Multiple urls can be specified for InfluxDB cluster support. Server to
   # write to will be randomly chosen each interval.
   # urls = ["http://localhost:8086"] # required.
-  urls = <%= @outputs_influxdb_urls %>
+  urls = <%= @outputs_influxdb_urls.inspect %>
 
   # The target database for metrics. This database must already exist
   # database = "telegraf" # required.
@@ -101,11 +101,11 @@
 # Read metrics about cpu usage
 [cpu]
   # Whether to report per-cpu stats or not
-  percpu = true
+  percpu = <%= scope['::telegraf::cpu_percpu']%>
   # Whether to report total system cpu stats or not
-  totalcpu = true
+  totalcpu = <%= scope['::telegraf::cpu_totalcpu']%>
   # Comment this line if you want the raw CPU time metrics
-  drop = ["cpu_time"]
+  drop = "<%= scope['::telegraf::cpu_drop']%>"
 
 # Read metrics about disk usage by mount point
 [disk]
@@ -113,7 +113,9 @@
   #
   # By default, telegraf gather stats for all mountpoints.
   # Setting mountpoints will restrict the stats to the specified mountpoints.
-  # Mountpoints=["/"]
+<% if scope['::telegraf::disk_mountpoints.any?']%>
+  Mountpoints = <%= scope['::telegraf::disk_mountpoints'].inspect %>
+<% end %>
 
 # Read metrics about disk IO by device
 [io]
