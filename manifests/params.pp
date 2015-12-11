@@ -18,12 +18,12 @@ class telegraf::params {
   $tags                      = undef
 
   # [agent]
-  $agent_hostname            = $::hostname,
+  $agent_hostname            = $::hostname
   $agent_interval            = '10s'
 
   # [[plugins.cpu]]
   $cpu_percpu                 = true
-  $cpu_totalcpu                = true
+  $cpu_totalcpu               = true
   $cpu_drop                   = ["cpu_time"]
 
   # [[plugins.disk]]
