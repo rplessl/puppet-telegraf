@@ -4,6 +4,16 @@
 #
 # === Parameters
 #
+# [*servers*]
+#  Elasticsearch servers as a string: list of one or more Elasticsearch servers
+#
+# [*cluster_health]
+#  Boolean: default true.
+#  If true, it will also obtain cluster level stats.
+#
+# [*local*]
+#  Boolean: default true.
+#  If false, it will read the indices stats from all nodes.
 #
 # === Examples
 #
@@ -18,6 +28,7 @@
 # Copyright 2015 Asthon Davis
 #
 class telegraf::plugins::elasticsearch (
+  # [elasticsearch] section of telegraf.conf
   $servers          = ["http://localhost:9200"],
   $cluster_health   = true,
   $local            = true,

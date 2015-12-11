@@ -8,14 +8,15 @@
 [outputs.opentsdb]
 
   # prefix for metrics keys
-  prefix = "<%= @opentsdb_prefix %>"
+  prefix = <%= scope['telegraf::plugins::opentsdb::opentsdb_prefix'] %>
+
 
   ## Telnet Mode ##
   # DNS name of the OpenTSDB server in telnet mode
-  host = "<%= @opentsdb_server %>"
+  host = <%= scope['telegraf::plugins::opentsdb::opentsdb_server'] %>
 
   # Port of the OpenTSDB server in telnet mode
-  port = <%= @opentsdb_port %>
+  port = <%= scope['telegraf::plugins::opentsdb::opentsdb_port'] %>
 
   # Debug true - Prints OpenTSDB communication
   # debug = true

@@ -11,9 +11,11 @@
 #
 # [*opentsdb_port*]
 #  opentsdb port
+#  default: 4242
 #
 # [*opentsdb_prefix*]
 #  opentsdb metric prefix
+#  default: my.metrics.telegraf.
 #
 # === Examples
 #

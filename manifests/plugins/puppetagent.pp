@@ -4,6 +4,9 @@
 #
 # === Parameters
 #
+# [*location*]
+#  Path and filename of the latest run information of puppet
+#
 # === Examples
 #
 #  include telegraf::plugins::puppetagent
@@ -18,6 +21,7 @@
 #
 class telegraf::plugins::puppetagent (
   # [puppetagent] section of telegraf.conf
+  $location = '/var/lib/puppet/state/last_run_summary.yaml',
 ){
 
   file { "${telegraf::config_directory}/40-puppetagent.conf":

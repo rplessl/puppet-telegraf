@@ -4,6 +4,11 @@
 #
 # === Parameters
 #
+# [*address*]
+#  Connection string to PostgreSQL DB.
+#  default: Host -> localhost
+#           User -> telegraf user
+#           SSL -> disabled
 #
 # === Examples
 #
@@ -19,6 +24,8 @@
 #
 class telegraf::plugins::postgresql (
   # [postgresql] section of telegraf.conf
+  # default
+  $address = "sslmode=disable",
 ){
 
   file { "${telegraf::config_directory}/31-postgresql.conf":

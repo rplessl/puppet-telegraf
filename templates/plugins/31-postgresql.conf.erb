@@ -26,7 +26,7 @@
   # to grab metrics for.
   #
 
-  address = "sslmode=disable"
+  address = <%= scope['telegraf::plugins::postgresql::address'] %>
 
   # A list of databases to pull metrics about. If not specified, metrics for all
   # databases are gathered.
