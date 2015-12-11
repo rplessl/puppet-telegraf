@@ -16,6 +16,26 @@ class telegraf::install {
     }
   }
 
+  if $telegraf::manage_influx_repo == true {
+    case $::operatingsystem {
+      'Ubuntu': {
+        apt::source{'influx':
+          location     => 'https://repos.influxdata.com/ubuntu',
+          release      => $::lsbdistcode,
+          architecture => 'amd64',
+          repos        => 'stable',
+          key          => {
+            id     => '05CE15085FC09D18E99EFB22684A14CF2582E0C5',
+            source => 'https://repos.influxdata.com/influxdb.key',
+          },
+        }
+      }
+      default: {
+        fail("OS ${::operatingsystem} not supported")
+      }
+    }
+  }
+
   if ((!$telegraf::install_from_repository) and ($my_package_ensure =~ /present|installed|latest/ )) {
     # package source and provider
     case $::osfamily {
@@ -62,7 +82,14 @@ class telegraf::install {
   else {
     # install / purge the package
     package { 'telegraf':
-      ensure => $my_package_ensure,
+      ensure  => $my_package_ensure,
+      require => $telegraf::manage_influx_repo ? {
+        true  => $operatingsystem ? {
+          'Ubuntu' => [Apt::Source['influx'], Class['apt::update']],
+          default  => [],
+        },
+        default => [],
+      }
     }
   }
 }
