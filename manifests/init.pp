@@ -42,7 +42,7 @@
 #
 class telegraf (
   $ensure                    = 'installed',
-  $version                   = '0.2.0',
+  $version                   = '0.2.4',
   $install_from_repository   = true,
   $config_base_file          = '/etc/opt/telegraf/telegraf.conf',
   $config_directory          = '/etc/opt/telegraf/telegraf.d',

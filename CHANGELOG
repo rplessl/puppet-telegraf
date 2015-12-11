@@ -1,3 +1,13 @@
+## not released
+
+* New Upstream Release and Interface for InfluxData Telegraf 0.2.4 -- @rplessl
+* Added configurable Output-Plugins for
+  - OpenTSDB
+* Added configurable Input-Plugins for
+  - Mysql
+  - PostgreSQL
+  - PuppetAgent
+
 ## v0.2.0 [2015-11-09]
 
 * Updated installation manual in README.md -- @rplessl
