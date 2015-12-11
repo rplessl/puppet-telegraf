@@ -1,12 +1,17 @@
 ## not released
 
+* Changed puppet module to parameterization -- Thanks @ntent-ashton!
+* Added Elasticsearch plugin -- Thanks @ntent-ashton!
+* Added parametrization for CPU / Mountpoints -- Thanks @ntent-ashton!
 * New Upstream Release and Interface for InfluxData Telegraf 0.2.4 -- @rplessl
+* Restart Telegraf Service if output plugin configuration changes -- @rplessl
 * Added configurable Output-Plugins for
-  - OpenTSDB
+  - OpenTSDB -- @rplessl
 * Added configurable Input-Plugins for
-  - Mysql
-  - PostgreSQL
-  - PuppetAgent
+  - Mysql -- @rplessl
+  - PostgreSQL -- @rplessl
+  - PuppetAgent -- @rplessl
+
 
 ## v0.2.0 [2015-11-09]
 
