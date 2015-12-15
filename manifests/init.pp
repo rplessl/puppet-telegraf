@@ -7,6 +7,9 @@
 # [*ensure*]
 #  handle installation, activation or purging of telegraf
 #
+# [*service_ensure*]
+#  control weather telegraf service should be running
+#
 # [*version*]
 #  handle version of telegraf
 #
@@ -54,6 +57,7 @@
 
 class telegraf (
   $ensure                    = 'installed',
+  $service_ensure            = 'running',
   $version                   = '0.2.0',
   $install_from_repository   = true,
   $manage_influx_repo        = false,

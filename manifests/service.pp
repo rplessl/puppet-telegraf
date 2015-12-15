@@ -1,7 +1,7 @@
 # == Class: telegraf::service
 # DO NO CALL DIRECTLY
 class telegraf::service {
-  $service_ensure = $telegraf::ensure
+  $service_ensure = $telegraf::service_ensure
   case $service_ensure {
     true: {
       $my_service_ensure = 'running'
@@ -9,14 +9,8 @@ class telegraf::service {
     false: {
       $my_service_ensure = 'stopped'
     }
-    'absent','purged': {
-      $my_service_ensure = 'stopped'
-    }
-    'ensure','present','installed': {
-      $my_service_ensure = 'running'
-    }
     default: {
-      $my_service_ensure = 'running'
+      $my_service_ensure = $service_ensure
     }
   }
 
@@ -31,7 +25,7 @@ class telegraf::service {
   }
 
   service { 'telegraf':
-    ensure     => 'running',
+    ensure     => $my_service_ensure,
     enable     => true,
     hasrestart => true,
     provider   => $provider,
