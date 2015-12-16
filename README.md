@@ -1,5 +1,5 @@
 ## Overview
-[![Build Status](https://travis-ci.org/rplessl/puppet-telegraf.png)](https://travis-ci.org/rplessl/puppet-telegraf)
+[![Build Status](https://travis-ci.org/rplessl/puppet-telegraf.png?branch=master)](https://travis-ci.org/rplessl/puppet-telegraf?branch=master)
 [![rplessl-telegraf](https://img.shields.io/puppetforge/r/rplessl/telegraf.svg)](https://forge.puppetlabs.com/rplessl/telegraf)
 
 This Puppet module installs and manages [InfluxDB Telegraf](https://github.com/influxdb/telegraf). 
