@@ -4,7 +4,7 @@
 
 This Puppet module installs and manages [InfluxDB Telegraf](https://github.com/influxdb/telegraf). 
 
-Use this puppet module to install and configure [InfluxDB Telegraf](https://github.com/influxdb/telegraf) with version 0.2.0 and newer.
+Use this puppet module to install and configure [InfluxDB Telegraf](https://github.com/influxdb/telegraf) with version 0.2.4 and newer.
 
 #### Table of Contents
 
@@ -41,7 +41,12 @@ Include the class and set the InfluxDB parameters.
 
 ```
 class { 'telegraf':
+    version                   => '0.2.4',
     install_from_repository   => false,
+    config_template           => 'telegraf/telegraf.conf.erb',
+    config_base_file          => '/etc/opt/telegraf/telegraf.conf',
+    config_directory          => '/etc/opt/telegraf/telegraf.d',
+    # [outputs.influxdb] section of telegraf.conf
     outputs_influxdb_enabled  => true,
     outputs_influxdb_urls     => ['http://localhost:8086'],
     outputs_influxdb_database => 'telegraf',
@@ -57,6 +62,7 @@ class { 'telegraf':
     ensure                    => 'installed',
     version                   => '0.2.4',
     install_from_repository   => true,
+    config_template           => 'telegraf/telegraf.conf.erb',
     config_base_file          => '/etc/opt/telegraf/telegraf.conf',
     config_directory          => '/etc/opt/telegraf/telegraf.d',
 
@@ -77,6 +83,15 @@ class { 'telegraf':
 
     # [agent]
     agent_hostname            => $::hostname,
+    agent_interval            => '10s',
+
+    # [[plugins.cpu]]
+    cpu_percpu                => true,
+    cpu_totalcpu              => true,
+    cpu_drop                  => ["cpu_time"],
+
+    # [[plugins.disk]]
+    disk_mountpoints           = ["/","/home"],
 }
 ```
 

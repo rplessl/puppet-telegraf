@@ -34,6 +34,6 @@ class telegraf::params {
 
   # [[plugins.disk]]
   # The default value for this is NO value.
-  #$disk_mountpoints
+  $disk_mountpoints           = ["/","/home"]
 
 }
