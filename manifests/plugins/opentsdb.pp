@@ -34,7 +34,7 @@ class telegraf::plugins::opentsdb (
   $opentsdb_prefix = 'my.metrics.telegraf.',
 ){
 
-  file { "${telegraf::config_directory}/01-opentsdb.conf":
+  file { "${::telegraf::config_directory}/01-opentsdb.conf":
     ensure  => file,
     content => template('telegraf/plugins/01-opentsdb.conf.erb'),
     mode    => '0644',

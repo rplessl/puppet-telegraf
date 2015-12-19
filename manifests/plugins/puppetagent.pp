@@ -10,17 +10,17 @@
 #
 # === Authors
 #
-# Roman Plessl <roman.plessl@nine.ch>
+# Roman Plessl <roman.plessl@prunux.ch>
 #
 # === Copyright
 #
-# Copyright 2015 Roman Plessl, Nine Internet Solutions AG
+# Copyright 2015 Roman Plessl, Plessl + Burkhardt GmbH
 #
 class telegraf::plugins::puppetagent (
   # [puppetagent] section of telegraf.conf
 ){
 
-  file { "${telegraf::config_directory}/40-puppetagent.conf":
+  file { "${::telegraf::config_directory}/40-puppetagent.conf":
     ensure  => file,
     content => template('telegraf/plugins/40-puppetagent.conf.erb'),
     mode    => '0644',

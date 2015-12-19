@@ -23,7 +23,7 @@ class telegraf::plugins::elasticsearch (
   $local            = true,
 ){
 
-  file { "${telegraf::config_directory}/41-elasticsearch.conf":
+  file { "${::telegraf::config_directory}/41-elasticsearch.conf":
     ensure  => file,
     content => template('telegraf/plugins/41-elasticsearch.conf.erb'),
     mode    => '0644',

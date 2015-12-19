@@ -11,17 +11,17 @@
 #
 # === Authors
 #
-# Roman Plessl <roman.plessl@nine.ch>
+# Roman Plessl <roman.plessl@prunux.ch>
 #
 # === Copyright
 #
-# Copyright 2015 Roman Plessl, Nine Internet Solutions AG
+# Copyright 2015 Roman Plessl, Plessl + Burkhardt GmbH
 #
 class telegraf::plugins::postgresql (
   # [postgresql] section of telegraf.conf
 ){
 
-  file { "${telegraf::config_directory}/31-postgresql.conf":
+  file { "${::telegraf::config_directory}/31-postgresql.conf":
     ensure  => file,
     content => template('telegraf/plugins/31-postgresql.conf.erb'),
     mode    => '0644',
