@@ -58,43 +58,52 @@
 # [*disk_mountpoint*]
 #  Configures system Disk plugin (mountpoints)
 #
+# === Authors
+#
+# Roman Plessl <roman.plessl@prunux.ch>
+#
+# === Copyright
+#
+# Copyright 2015 Roman Plessl, Plessl + Burkhardt GmbH
+#
 class telegraf (
-  $ensure                     = $telegraf::params::ensure,
-  $version                    = $telegraf::params::version,
-  $install_from_repository    = $telegraf::params::install_from_repository,
-  $config_template            = $telegraf::params::config_template,
-  $config_base_file           = $telegraf::params::config_base_file,
-  $config_directory           = $telegraf::params::config_directory,
+  $ensure                     = $::telegraf::params::ensure,
+  $version                    = $::telegraf::params::version,
+  $install_from_repository    = $::telegraf::params::install_from_repository,
+  $config_template            = $::telegraf::params::config_template,
+  $config_base_file           = $::telegraf::params::config_base_file,
+  $config_directory           = $::telegraf::params::config_directory,
 
   # [outputs.influxdb] section of telegraf.conf
-  $outputs_influxdb_enabled   = $telegraf::params::outputs_influxdb_enabled,
-  $outputs_influxdb_urls      = $telegraf::params::outputs_influxdb_urls,
-  $outputs_influxdb_database  = $telegraf::params::outputs_influxdb_database,
-  $outputs_influxdb_username  = $telegraf::params::outputs_influxdb_username,
-  $outputs_influxdb_password  = $telegraf::params::outputs_influxdb_password,
+  $outputs_influxdb_enabled   = $::telegraf::params::outputs_influxdb_enabled,
+  $outputs_influxdb_urls      = $::telegraf::params::outputs_influxdb_urls,
+  $outputs_influxdb_database  = $::telegraf::params::outputs_influxdb_database,
+  $outputs_influxdb_username  = $::telegraf::params::outputs_influxdb_username,
+  $outputs_influxdb_password  = $::telegraf::params::outputs_influxdb_password,
 
   # [tags] section of telegraf.conf
-  $tags                       = $telegraf::params::tags,
+  $tags                       = $::telegraf::params::tags,
 
   # [agent]
-  $agent_hostname             = $telegraf::params::agent_hostname,
-  $agent_interval             = $telegraf::params::agent_interval,
+  $agent_hostname             = $::telegraf::params::agent_hostname,
+  $agent_interval             = $::telegraf::params::agent_interval,
 
   # [[plugins.cpu]]
-  $cpu_percpu                 = $telegraf::params::cpu_percpu,
-  $cpu_totalcpu               = $telegraf::params::cpu_totalcpu,
-  $cpu_drop                   = $telegraf::params::cpu_drop,
+  $cpu_percpu                 = $::telegraf::params::cpu_percpu,
+  $cpu_totalcpu               = $::telegraf::params::cpu_totalcpu,
+  $cpu_drop                   = $::telegraf::params::cpu_drop,
 
   # [[plugins.disk]]
-  $disk_mountpoints           = $telegraf::params::mountpoints
+  $disk_mountpoints           = $::telegraf::params::mountpoints
 
-) inherits telegraf::params
+) inherits ::telegraf::params
 {
-  class { 'telegraf::install': }
-  ->
-  class { 'telegraf::config': }
-  ~>
-  class { 'telegraf::service': }
-  ->
-  Class['telegraf']
+  class { '::telegraf::install': }  ->
+  class { '::telegraf::config': }  ~>
+  class { '::telegraf::service': }
+
+  contain telegraf::install
+  contain telegraf::config
+  contain telegraf::service
+
 }

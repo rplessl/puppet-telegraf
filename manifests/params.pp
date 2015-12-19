@@ -2,7 +2,15 @@
 #
 # Internal class.
 #
-# Configures default parameters for telegraf
+# Configures default for telegraf
+#
+# === Authors
+#
+# Roman Plessl <roman.plessl@prunux.ch>
+#
+# === Copyright
+#
+# Copyright 2015 Roman Plessl, Plessl + Burkhardt GmbH
 #
 class telegraf::params {
 
@@ -34,6 +42,6 @@ class telegraf::params {
 
   # [[plugins.disk]]
   # The default value for this is NO value.
-  $disk_mountpoints           = ["/","/home"]
+  #$disk_mountpoints
 
 }
