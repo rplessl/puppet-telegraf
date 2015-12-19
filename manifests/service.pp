@@ -1,5 +1,9 @@
 # == Class: telegraf::service
-# DO NO CALL DIRECTLY
+#
+# Internal class.
+#
+# Configures services for telegraf
+#
 class telegraf::service {
   $service_ensure = $telegraf::ensure
   case $service_ensure {

@@ -1,6 +1,6 @@
 # == Class: telegraf::install
 #
-# This class is called from gitlab for install.
+# This class is called from telegraf for install.
 #
 class telegraf::install {
   $package_ensure = $telegraf::ensure

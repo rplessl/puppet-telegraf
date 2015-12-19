@@ -11,7 +11,10 @@
 #  handle version of telegraf
 #
 # [*install_from_repository *]
-#  Install telegraf from official repository
+#  Install telegraf from repository
+#
+# [*config_template*]
+#  path to the template (erb file) for base configuration of telegraf
 #
 # [*config_base_file*]
 #  path to the base configuration file
@@ -20,7 +23,7 @@
 #  path to the configuration directory (snippets)
 #
 # [*outputs_influxdb_enabled*]
-#  Activate InfluxDB as a output Plugin
+#  Activate InfluxDB as a output sink
 #
 # [*outputs_influxdb_urls*]
 #  URLs to output sinks InfluxDB
@@ -39,6 +42,21 @@
 #
 # [*agent_hostname*]
 #  Configures agent hostname for sending it to the sinks
+#
+# [*agent_interval*]
+#  Configures agent fetching interval
+#
+# [*cpu_percpu*]
+#  Configures system CPU plugin (percpu)
+#
+# [*cpu_totalcpu*]
+#  Configures system CPU plugin (totalcpu)
+#
+# [*cpu_drop*]
+#  Configures system CPU plugin (drop)
+#
+# [*disk_mountpoint*]
+#  Configures system Disk plugin (mountpoints)
 #
 class telegraf (
   $ensure                     = $telegraf::params::ensure,

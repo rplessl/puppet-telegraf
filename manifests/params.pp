@@ -1,3 +1,9 @@
+# == Class: telegraf::params
+#
+# Internal class.
+#
+# Configures default parameters for telegraf
+#
 class telegraf::params {
 
   $ensure                    = 'installed'
