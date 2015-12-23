@@ -107,22 +107,18 @@ class { '::telegraf::plugins::opentsdb':
   opentsdb_prefix => 'my.metrics.telegraf.',
 }
 ```
-
 2. MySQL
 ```
 include '::telegraf::plugins::mysql'
 ```
-
 3. PostgreSQL
 ```
 include '::telegraf::plugins::postgresql'
 ```
-
 4. PuppetAgent
 ```
 include '::telegraf::plugins::puppetagent'
 ```
-
 5. Elasticsearch
 ```
 class { '::telegraf::plugins::postgresql': }
