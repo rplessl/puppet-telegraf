@@ -2,7 +2,7 @@
 [![Build Status](https://travis-ci.org/rplessl/puppet-telegraf.svg?branch=master)](https://travis-ci.org/rplessl/puppet-telegraf?branch=master)
 [![rplessl-telegraf](https://img.shields.io/puppetforge/r/rplessl/telegraf.svg)](https://forge.puppetlabs.com/rplessl/telegraf)
 
-This Puppet module installs and manages [InfluxDB Telegraf](https://github.com/influxdb/telegraf). 
+This Puppet module installs and manages [InfluxDB Telegraf](https://github.com/influxdb/telegraf).
 
 Use this puppet module to install and configure [InfluxDB Telegraf](https://github.com/influxdb/telegraf) with version 0.2.4 and newer.
 
@@ -37,15 +37,13 @@ puppet-telegraf requires only the [wget](https://forge.puppetlabs.com/maestrodev
 
 ### Beginning with telegraf
 
-Include the class and set the InfluxDB parameters.
+Include the class and set the necessary Telegraf and InfluxDB parameters.
 
 ```
-class { 'telegraf':
+class { '::telegraf':
     version                   => '0.2.4',
     install_from_repository   => false,
     config_template           => 'telegraf/telegraf.conf.erb',
-    config_base_file          => '/etc/opt/telegraf/telegraf.conf',
-    config_directory          => '/etc/opt/telegraf/telegraf.d',
     # [outputs.influxdb] section of telegraf.conf
     outputs_influxdb_enabled  => true,
     outputs_influxdb_urls     => ['http://localhost:8086'],
@@ -55,13 +53,13 @@ class { 'telegraf':
 }
 ```
 
-This telegraf module supports the following configuration options:
+This puppet-telegraf module supports the following configuration options:
 
 ```
-class { 'telegraf':
+class { '::telegraf':
     ensure                    => 'installed',
     version                   => '0.2.4',
-    install_from_repository   => true,
+    install_from_repository   => false,
     config_template           => 'telegraf/telegraf.conf.erb',
     config_base_file          => '/etc/opt/telegraf/telegraf.conf',
     config_directory          => '/etc/opt/telegraf/telegraf.d',
@@ -95,7 +93,7 @@ class { 'telegraf':
 }
 ```
 
-## Development 
+## Development
 
 1. Fork it (https://github.com/rplessl/puppet-telegraf/fork)
 2. Create your feature branch (`git checkout -b my-new-feature`)
