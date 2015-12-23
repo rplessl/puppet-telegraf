@@ -125,7 +125,7 @@ The following plugins have been prepared for input / output configuration of Tel
 
 5. Elasticsearch
   ```
-  class { '::telegraf::plugins::postgresql': }
+  class { '::telegraf::plugins::elasticsearch': }
   ```
 
 ## Development
