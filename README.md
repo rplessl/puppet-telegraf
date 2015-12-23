@@ -95,6 +95,40 @@ class { '::telegraf':
 }
 ```
 
+### Plugins
+
+The following plugins have been prepared for input / output configuration of Telegraf.
+
+1. OpenTSDB
+```
+class { '::telegraf::plugins::opentsdb':
+  opentsdb_server => 'my.opentsdb.server.domain.com',
+  opentsdb_port   => 4242,
+  opentsdb_prefix => 'my.metrics.telegraf.',
+}
+```
+
+2. MySQL
+```
+include '::telegraf::plugins::mysql'
+```
+
+3. PostgreSQL
+```
+include '::telegraf::plugins::postgresql'
+```
+
+4. PuppetAgent
+```
+include '::telegraf::plugins::puppetagent'
+```
+
+5. Elasticsearch
+```
+class { '::telegraf::plugins::postgresql': }
+
+```
+
 ## Development
 
 1. Fork it (https://github.com/rplessl/puppet-telegraf/fork)
