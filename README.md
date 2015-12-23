@@ -29,6 +29,8 @@ The installed package for telegraf will be fetched from
   a) the provided package from get.influxdb.com or
   b) the provided package from your own repository (apt repository, aptly, yum)
 
+Remark: The apt / yum repository from InfluxData will be included in version 0.3.0 of this module.
+
 ## Setup
 
 ### Setup Requirements

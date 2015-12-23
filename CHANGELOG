@@ -1,5 +1,6 @@
-## not released
+## v0.2.4 [2015-12-23]
 
+* Enhanced for puppet 4 compatiblity (closes #15) -- @rplessl
 * Changed puppet module to parameterization -- Thanks @ntent-ashton!
 * Added Elasticsearch plugin -- Thanks @ntent-ashton!
 * Added parametrization for CPU / Mountpoints -- Thanks @ntent-ashton!
