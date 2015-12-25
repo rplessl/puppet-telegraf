@@ -1,5 +1,6 @@
-## v0.2.4 [2015-12-23]
+## v0.2.4 [2015-12-25]
 
+* Enhanced documenttion for using pulgins (Closes #16, #17) -- @rplessl
 * Enhanced for puppet 4 compatiblity (closes #15) -- @rplessl
 * Changed puppet module to parameterization -- Thanks @ntent-ashton!
 * Added Elasticsearch plugin -- Thanks @ntent-ashton!
