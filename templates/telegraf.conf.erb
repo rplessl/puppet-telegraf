@@ -105,7 +105,7 @@
   # Whether to report total system cpu stats or not
   totalcpu = <%= scope['::telegraf::cpu_totalcpu']%>
   # Comment this line if you want the raw CPU time metrics
-  drop = "<%= scope['::telegraf::cpu_drop']%>"
+  drop = <%= scope['::telegraf::cpu_drop']%>
 
 # Read metrics about disk usage by mount point
 [disk]
