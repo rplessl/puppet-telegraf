@@ -64,7 +64,7 @@
 
 <% if @outputs_influxdb_enabled -%>
 # Configuration for influxdb server to send metrics to
-[outputs.influxdb]
+[[outputs.influxdb]]
   # The full HTTP endpoint URL for your InfluxDB instance
   # Multiple urls can be specified for InfluxDB cluster support. Server to
   # write to will be randomly chosen each interval.
@@ -98,8 +98,10 @@
 #                                  PLUGINS                                    #
 ###############################################################################
 
+[plugins]
+
 # Read metrics about cpu usage
-[cpu]
+[[plugins.cpu]]
   # Whether to report per-cpu stats or not
   percpu = <%= scope['::telegraf::cpu_percpu']%>
   # Whether to report total system cpu stats or not
@@ -108,9 +110,7 @@
   drop = <%= scope['::telegraf::cpu_drop']%>
 
 # Read metrics about disk usage by mount point
-[disk]
-  # no active configuration changes
-  #
+[[plugins.disk]]
   # By default, telegraf gather stats for all mountpoints.
   # Setting mountpoints will restrict the stats to the specified mountpoints.
 <% if scope['::telegraf::disk_mountpoints.any?']%>
@@ -118,9 +118,7 @@
 <% end %>
 
 # Read metrics about disk IO by device
-[io]
-  # no active configuration changes
-  #
+[[plugins.io]]
   # By default, telegraf will gather stats for all devices including
   # disk partitions.
   # Setting devices will restrict the stats to the specified devcies.
@@ -129,23 +127,28 @@
   # SkipSerialNumber = true
 
 # Read metrics about memory usage
-[mem]
+[[plugins.mem]]
   # no configuration
 
 # Read metrics about network usage
-[net]
-  # no active configuration changes
-  #
+[[plugins.net]]
   # By default, telegraf gathers stats from any up interface (excluding loopback)
   # Setting interfaces will tell it to gather these explicit interfaces,
   # regardless of status.
   #
   # interfaces = ["eth0", ... ]
+  #
+  # We drop not wanted icmp metrics
+  drop = ["net_icmp"]
 
 # Read metrics about swap memory usage
-[swap]
+[[plugins.swap]]
   # no configuration
 
 # Read metrics about system load & uptime
-[system]
+[[plugins.system]]
   # no configuration
+
+###############################################################################
+#                         SERVICE PLUGINS                                     #
+###############################################################################
