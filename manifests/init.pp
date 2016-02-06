@@ -43,6 +43,9 @@
 # [*agent_hostname*]
 #  Configures agent hostname for sending it to the sinks
 #
+# [*agent_flush_interval*]
+#  Configures agent flushing interval
+#
 # [*agent_interval*]
 #  Configures agent fetching interval
 #
@@ -87,6 +90,7 @@ class telegraf (
   # [agent]
   $agent_hostname             = $::telegraf::params::agent_hostname,
   $agent_interval             = $::telegraf::params::agent_interval,
+  $agent_flush_interval       = $::telegraf::params::agent_flush_interval,
 
   # [[plugins.cpu]]
   $cpu_percpu                 = $::telegraf::params::cpu_percpu,

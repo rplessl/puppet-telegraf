@@ -34,6 +34,7 @@ class telegraf::params {
   # [agent]
   $agent_hostname            = $::hostname
   $agent_interval            = '10s'
+  $agent_flush_interval      = '10s'
 
   # [[plugins.cpu]]
   $cpu_percpu                 = true
