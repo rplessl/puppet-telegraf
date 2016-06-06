@@ -104,10 +104,12 @@ class telegraf (
 {
   class { '::telegraf::install': }  ->
   class { '::telegraf::config': }  ~>
-  class { '::telegraf::service': }
+  class { '::telegraf::service': } ->
+  class { '::telegraf::cleanup': }
 
   contain telegraf::install
   contain telegraf::config
   contain telegraf::service
+  contain telegraf::cleanup
 
 }

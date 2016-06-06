@@ -1,4 +1,4 @@
-class { '::telegraf':
-  version                 => '0.2.4',
-  install_from_repository => false,
+class {
+  'telegraf':
+    install_from_repository => false;
 }
