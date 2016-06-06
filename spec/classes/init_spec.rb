@@ -17,6 +17,8 @@ describe 'telegraf' do
       it { is_expected.to contain_class('telegraf::install').that_comes_before('telegraf::config') }
       it { is_expected.to contain_class('telegraf::config') }
       it { is_expected.to contain_class('telegraf::service').that_subscribes_to('telegraf::config') }
+      it { is_expected.to contain_class('telegraf::cleanup') }
+      it { is_expected.to contain_class('telegraf::service').that_comes_before('telegraf::cleanup') }
 
       it { is_expected.to contain_service('telegraf') }
       it { is_expected.to contain_package('telegraf').with_ensure('installed') }
@@ -34,6 +36,8 @@ describe 'telegraf' do
       it { is_expected.to contain_class('telegraf::install').that_comes_before('telegraf::config') }
       it { is_expected.to contain_class('telegraf::config') }
       it { is_expected.to contain_class('telegraf::service').that_subscribes_to('telegraf::config') }
+      it { is_expected.to contain_class('telegraf::cleanup') }
+      it { is_expected.to contain_class('telegraf::service').that_comes_before('telegraf::cleanup') }
 
       it { is_expected.to contain_service('telegraf') }
       it { is_expected.to contain_package('telegraf').with_ensure('installed') }
@@ -49,7 +53,7 @@ describe 'telegraf' do
       :lsbdistcodename => 'trusty',
     }}
 
-    it { is_expected.to contain_file('/etc/opt/telegraf/telegraf.conf') }
-    it { is_expected.to contain_file('/etc/opt/telegraf/telegraf.d') }
+    it { is_expected.to contain_file('/etc/telegraf/telegraf.conf') }
+    it { is_expected.to contain_file('/etc/telegraf/telegraf.d') }
   end
 end
