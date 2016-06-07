@@ -14,11 +14,12 @@ describe 'telegraf' do
       it { is_expected.to compile.with_all_deps }
 
       it { is_expected.to contain_class('telegraf::params') }
-      it { is_expected.to contain_class('telegraf::install').that_comes_before('telegraf::config') }
+      it { is_expected.to contain_class('::telegraf::install').that_comes_before('::telegraf::config') }
       it { is_expected.to contain_class('telegraf::config') }
-      it { is_expected.to contain_class('telegraf::service').that_subscribes_to('telegraf::config') }
+      it { is_expected.to contain_class('::telegraf::service').that_subscribes_to('::telegraf::config') }
       it { is_expected.to contain_class('telegraf::cleanup') }
-      it { is_expected.to contain_class('telegraf::service').that_comes_before('telegraf::cleanup') }
+      it { is_expected.to contain_class('::telegraf::service').that_comes_before('::telegraf::cleanup') }
+
 
       it { is_expected.to contain_service('telegraf') }
       it { is_expected.to contain_package('telegraf').with_ensure('installed') }
