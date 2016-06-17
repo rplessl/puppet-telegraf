@@ -168,7 +168,9 @@ vagrant up
 ## License
 
 Licensed under the MIT License.
-Copyright 2015-2016 Roman Plessl (@rplessl)
+
+Copyright (c) 2015-2016 Roman Plessl (@rplessl), Nine Internet Solutions AG and
+Copyright (c) 2015-2016 Roman Plessl (@rplessl), Plessl + Burkhardt GmbH
 
 See [LICENSE](https://github.com/rplessl/puppet-telegraf/blob/master/LICENSE) File
 

@@ -67,7 +67,8 @@
 #
 # === Copyright
 #
-# Copyright 2015 Roman Plessl, Plessl + Burkhardt GmbH
+# Copyright 2015-2016 Roman Plessl, Plessl + Burkhardt GmbH
+# Copyright 2015-2016 Nine Internet Solutions AG
 #
 class telegraf (
   $ensure                     = $::telegraf::params::ensure,
@@ -102,9 +103,12 @@ class telegraf (
 
 ) inherits ::telegraf::params
 {
-  class { '::telegraf::install': }  ->
-  class { '::telegraf::config': }  ~>
-  class { '::telegraf::service': } ->
+  class { '::telegraf::install': }
+  ->
+  class { '::telegraf::config': }
+  ~>
+  class { '::telegraf::service': }
+  ->
   class { '::telegraf::cleanup': }
 
   contain telegraf::install

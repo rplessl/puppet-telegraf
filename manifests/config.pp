@@ -3,7 +3,7 @@
 # only values which are effectivly changed will be managed
 #
 # More information on these settings available at:
-#    https://github.com/influxdb/telegraf
+#    https://github.com/influxdata/telegraf
 #
 # === Authors
 #
