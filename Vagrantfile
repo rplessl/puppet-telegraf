@@ -12,9 +12,18 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.synced_folder "modules", "/tmp/puppet-modules",          type: "rsync", rsync__exclude: ".git/"
   config.vm.synced_folder ".",       "/tmp/puppet-modules/telegraf", type: "rsync", rsync__exclude: ".git/"
 
-  config.vm.define "ubuntu", primary: true do |ubuntu|
-    ubuntu.vm.box = "puppetlabs/ubuntu-14.04-64-puppet"
-    ubuntu.vm.provision :puppet do |puppet|
+  config.vm.define "xenial", primary: true do |xenial|
+    xenial.vm.box = "puppetlabs/ubuntu-16.04-64-puppet"
+    xenial.vm.provision :puppet do |puppet|
+      puppet.manifests_path = "tests"
+      puppet.manifest_file  = "vagrant.pp"
+      puppet.options        = ["--modulepath", "/tmp/puppet-modules"]
+    end
+  end
+
+  config.vm.define "trusty", primary: true do |trusty|
+    trusty.vm.box = "puppetlabs/ubuntu-14.04-64-puppet"
+    trusty.vm.provision :puppet do |puppet|
       puppet.manifests_path = "tests"
       puppet.manifest_file  = "vagrant.pp"
       puppet.options        = ["--modulepath", "/tmp/puppet-modules"]

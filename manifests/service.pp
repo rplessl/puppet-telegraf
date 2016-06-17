@@ -37,6 +37,9 @@ class telegraf::service {
     'jessie': {
       $provider = 'systemd'
     }
+    'xenial': {
+      $provider = 'systemd'
+    }
     default: {
       $provider = undef
     }
