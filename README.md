@@ -2,9 +2,9 @@
 [![Build Status](https://travis-ci.org/rplessl/puppet-telegraf.svg?branch=master)](https://travis-ci.org/rplessl/puppet-telegraf?branch=master)
 [![rplessl-telegraf](https://img.shields.io/puppetforge/r/rplessl/telegraf.svg)](https://forge.puppetlabs.com/rplessl/telegraf)
 
-This Puppet module installs and manages [InfluxDB Telegraf](https://github.com/influxdb/telegraf).
+This Puppet module installs and manages [InfluxDB Telegraf](https://github.com/influxdata/telegraf).
 
-Use this puppet module to install and configure [InfluxDB Telegraf](https://github.com/influxdb/telegraf) with version 0.2.4 and newer.
+Use this puppet module to install and configure [InfluxDB Telegraf](https://github.com/influxdata/telegraf) with version 0.13.1, 1.0.x beta and newer.
 
 #### Table of Contents
 
@@ -43,7 +43,7 @@ Include the class and set the necessary Telegraf and InfluxDB parameters.
 
 ```
 class { '::telegraf':
-    version                   => '0.2.4',
+    version                   => '0.13.1',
     install_from_repository   => false,
     config_template           => 'telegraf/telegraf.conf.erb',
     # [outputs.influxdb] section of telegraf.conf
@@ -60,7 +60,7 @@ This puppet-telegraf module supports the following configuration options:
 ```
 class { '::telegraf':
     ensure                    => 'installed',
-    version                   => '0.2.4',
+    version                   => '0.13.1',
     install_from_repository   => false,
     config_template           => 'telegraf/telegraf.conf.erb',
     config_base_file          => '/etc/opt/telegraf/telegraf.conf',
@@ -150,6 +150,7 @@ Install and setup vagrant [https://docs.vagrantup.com/v2/installation/index.html
 
 Fetch virtual machines:
 ```ShellSession
+vagrant box add puppetlabs/ubuntu-16.04-64-puppet --insecure
 vagrant box add puppetlabs/ubuntu-14.04-64-puppet --insecure
 vagrant box add puppetlabs/centos-6.6-64-puppet   --insecure
 vagrant box add puppetlabs/centos-7.0-64-puppet   --insecure
@@ -167,7 +168,7 @@ vagrant up
 ## License
 
 Licensed under the MIT License.
-Copyright 2015 Roman Plessl (@rplessl)
+Copyright 2015-2016 Roman Plessl (@rplessl)
 
 See [LICENSE](https://github.com/rplessl/puppet-telegraf/blob/master/LICENSE) File
 

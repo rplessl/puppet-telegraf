@@ -1,11 +1,11 @@
 {
   "name": "rplessl-telegraf",
-  "version": "0.2.4",
+  "version": "0.13.1",
   "source": "https://github.com/rplessl/puppet-telegraf",
   "author": "Roman Plessl",
   "license": "MIT",
-  "summary": "Setup and manage influxdb's telegraf 0.2.4 and newer",
-  "description": "Setup and manage influxdb's telegraf 0.2.4 and newer",
+  "summary": "Setup and manage influxdb's telegraf 0.13.1 and newer",
+  "description": "Setup and manage influxdb's telegraf 0.13.1 and newer",
   "source": "git://github.com/rplessl/puppet-telegraf.git",
   "project_page": "https://github.com/rplessl/puppet-telegraf",
   "issues_url": "https://github.com/rplessl/puppet-telegraf/issues",
@@ -43,7 +43,7 @@
     },
     {
       "operatingsystem": "Ubuntu",
-      "operatingsystemrelease": [ "12.04", "14.04" ]
+      "operatingsystemrelease": [ "12.04", "14.04", "16.04" ]
     }
   ],
   "requirements": [
