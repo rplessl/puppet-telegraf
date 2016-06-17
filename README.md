@@ -63,8 +63,8 @@ class { '::telegraf':
     version                   => '0.13.1',
     install_from_repository   => false,
     config_template           => 'telegraf/telegraf.conf.erb',
-    config_base_file          => '/etc/opt/telegraf/telegraf.conf',
-    config_directory          => '/etc/opt/telegraf/telegraf.d',
+    config_base_file          => '/etc/telegraf/telegraf.conf',
+    config_directory          => '/etc/telegraf/telegraf.d',
 
     # [outputs.influxdb] section of telegraf.conf
     outputs_influxdb_enabled  => true,
