@@ -1,4 +1,3 @@
----
 HOSTS:
   ubuntu-1404-x64:
     default_apply_opts:
@@ -10,8 +9,10 @@ HOSTS:
     docker_preserve_image: true
     docker_cmd: '["/sbin/init"]'
     docker_image_commands:
-      - 'apt-get install -y wget'
+      - 'rm /usr/sbin/policy-rc.d'
+      - 'rm /sbin/initctl; dpkg-divert --rename --remove /sbin/initctl'
       - 'locale-gen en_US.UTF-8'
+      - 'locale-gen de_CH.UTF-8'
 CONFIG:
-  type: foss
+  type: aio
   log_level: debug

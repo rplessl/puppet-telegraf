@@ -13,7 +13,7 @@ end
 group :development do
   gem "travis"
   gem "travis-lint"
-  gem "beaker"
+  gem "beaker", '2.33.0'
   gem "beaker-rspec"
   gem "puppet-blacksmith"
   gem "guard-rake"
