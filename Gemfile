@@ -3,7 +3,8 @@ source "https://rubygems.org"
 group :test do
   gem "rake"
   gem "puppet", ENV['PUPPET_VERSION'] || '~> 3.7.0'
-  gem 'metadata-json-lint'
+  gem "safe_yaml", "~> 1.0.4"
+  gem "metadata-json-lint"
   gem "puppet-lint"
   gem "rspec-puppet"
   gem "puppet-syntax"
