@@ -37,12 +37,12 @@ class telegraf::params {
   $agent_flush_interval      = '10s'
 
   # [[plugins.cpu]]
-  $cpu_percpu                 = true
-  $cpu_totalcpu               = true
-  $cpu_drop                   = ['time_*']
+  $cpu_percpu                = true
+  $cpu_totalcpu              = true
+  $cpu_drop                  = ['time_*']
 
   # [[plugins.disk]]
   # The default value for this is NO value.
-  #$disk_mountpoints
+  $disk_mountpoints          = undef
 
 }

@@ -105,7 +105,7 @@ class telegraf (
   $cpu_drop                   = $::telegraf::params::cpu_drop,
 
   # [[plugins.disk]]
-  $disk_mountpoints           = $::telegraf::params::mountpoints
+  $disk_mountpoints           = $::telegraf::params::disk_mountpoints
 
 ) inherits ::telegraf::params
 {
