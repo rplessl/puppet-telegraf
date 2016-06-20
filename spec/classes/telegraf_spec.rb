@@ -8,6 +8,8 @@ describe 'telegraf' do
       let(:params) {{ }}
       let(:facts) {{
         :architecture              => 'amd64',
+        :lsbdistcodename           => 'Maipo',
+        :lsbdistid                 => 'RedHatEnterpriseServer',
         :operatingsystem           => 'redhat',
         :operatingsystemmajrelease => '7',
         :osfamily                  => 'redhat',
@@ -32,9 +34,9 @@ describe 'telegraf' do
       let(:facts) {{
         :architecture              => 'amd64',
         :lsbdistcodename           => 'trusty',
-        :operatingsystemmajrelease => '14.04',
         :lsbdistid                 => 'ubuntu',
         :operatingsystem           => 'debian',
+        :operatingsystemmajrelease => '14.04',
         :osfamily                  => 'debian',
       }}
 
@@ -81,7 +83,7 @@ describe 'telegraf' do
       let(:params) {{ }}
       let(:facts) {{
         :architecture              => 'armv7l',
-        :lsbdistcodename           => 'Jessie',
+        :lsbdistcodename           => 'jessie',
         :lsbdistid                 => 'raspbian',
         :operatingsystem           => 'debian',
         :operatingsystemmajrelease => '8',
