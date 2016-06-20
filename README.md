@@ -136,6 +136,11 @@ The following plugins have been prepared for input / output configuration of Tel
   class { '::telegraf::plugins::inputs::procstats': }
   ```
 
+7. PowerDNS
+  ```puppet
+  class { '::telegraf::plugins::inputs::powerdns': }
+  ```
+
 ## Development
 
 1. Fork it (https://github.com/rplessl/puppet-telegraf/fork)

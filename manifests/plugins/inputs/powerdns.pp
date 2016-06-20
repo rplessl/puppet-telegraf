@@ -1,4 +1,4 @@
-# == Class: telegraf::plugins::powerdns
+# == Class: telegraf::plugins::inputs::powerdns
 #
 # this plugin adds the PowerDNS input plugin to telegraf
 #
@@ -6,15 +6,15 @@
 #
 # === Examples
 #
-#  include telegraf::plugins::powerdns
+#  include telegraf::plugins::include::powerdns
 #
 # === Authors
 #
-# Roman Plessl <roman.plessl@prunux.ch>
+# Marius Rieder <marius.rieder@nine.ch>
 #
 # === Copyright
 #
-# Copyright 2015 Roman Plessl, Plessl + Burkhardt GmbH
+# Copyright 2016 Nine Internet Solutions AG
 #
 class telegraf::plugins::powerdns (
   # [powerdns] section of telegraf.conf
@@ -24,7 +24,7 @@ class telegraf::plugins::powerdns (
 
   file { "${::telegraf::config_directory}/53-powerdns.conf":
     ensure  => file,
-    content => template('telegraf/plugins/53-powerdns.conf.erb'),
+    content => template('telegraf/plugins/inputs/53-powerdns.conf.erb'),
     mode    => '0644',
     owner   => 'root',
     group   => 'telegraf',
