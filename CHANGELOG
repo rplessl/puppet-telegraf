@@ -1,6 +1,12 @@
-## v0.13.1 [2015-06-xx]
+## v0.13.1 [2015-06-20]
 
 * Enhanced for working with telegraf 0.13.x -- @thirdeyenick and @rplessl
+* Refactoring plugin system (closes #23) -- @rplessl
+* enhance plugin system to be more consitent with telegraf itself (closes #23)
+* Documenation love (closes #24) -- @rplessl
+* Added apt / yum repository handling (closes #14) -- @rplessl
+* simplify acceptance tests
+* reduce and reenhance Gemfile to build with ruby 2.3 and puppet 3.8 / 4.0
 
 ## v0.2.4 [2015-12-25]
 

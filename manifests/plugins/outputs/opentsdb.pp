@@ -17,7 +17,7 @@
 #
 # === Examples
 #
-#  include telegraf::plugins::opentsdb
+#  include telegraf::plugins::outputs::opentsdb
 #
 # === Authors
 #
@@ -27,7 +27,7 @@
 #
 # Copyright 2015 Roman Plessl, Nine Internet Solutions AG
 #
-class telegraf::plugins::opentsdb (
+class telegraf::plugins::outputs::opentsdb (
   # [outputs.opentsdb] section of telegraf.conf
   $opentsdb_server = 'my.opentsdb.server.domain.com',
   $opentsdb_port   = 4242,
@@ -36,7 +36,7 @@ class telegraf::plugins::opentsdb (
 
   file { "${::telegraf::config_directory}/01-opentsdb.conf":
     ensure  => file,
-    content => template('telegraf/plugins/01-opentsdb.conf.erb'),
+    content => template('telegraf/plugins/outputs/01-opentsdb.conf.erb'),
     mode    => '0644',
     owner   => 'root',
     group   => 'telegraf',

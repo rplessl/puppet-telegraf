@@ -1,0 +1,31 @@
+# THIS FILE IS MANAGED BY PUPPET (created by telegraf::plugins::inputs::procstat)
+
+###############################################################################
+#                              PLUGIN PROCSTAT                                #
+###############################################################################
+
+# Read metrics from procstats
+[[inputs.procstat]]
+<%- if @prefix -%>
+  # the prefix to use to identify the daemon
+  # fields will be called "procstat_<prefix_><field_name>"
+  prefix = "<%= @prefix %>"
+<%- end -%>
+<%- if @pid_file -%>
+  # the pid file to find the daemon
+  pid_file = "<%= @pid_file %>"
+<%- elsif @exec_name -%>
+  # specify the exec name to find the daemon (used pgrep)
+  exe = "<%= @exec_name %>"
+<%- elsif @pattern -%>
+  # specify a pattern to find the daemon (used with pgrep -f)
+  pattern = "<%= @pattern %>"
+<%- elsif @user -%>
+  # find all processes of the user (uses pgrep -u)
+  user = "<%= @user %>"
+<%- end -%>
+<%- if @field_drop -%>
+  # drop the following fields from the output
+  field_drop = '<%= @field_drop %>'
+<%- end -%>
+

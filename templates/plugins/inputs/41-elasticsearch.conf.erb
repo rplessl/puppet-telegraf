@@ -1,0 +1,12 @@
+# THIS FILE IS MANAGED BY PUPPET (created by telegraf::plugins::inputs::elasticsearch)
+
+###############################################################################
+#                              PLUGIN ELASTICSEARCH                           #
+###############################################################################
+
+
+# Read metrics from elasticsearch
+[[inputs.elasticsearch]]
+  servers = <%= scope['telegraf::plugins::inputs::elasticsearch::servers'].inspect %>
+  local = <%= scope['telegraf::plugins::inputs::elasticsearch::local'] %>
+  cluster_health = <%= scope['telegraf::plugins::inputs::elasticsearch::cluster_health'] %>

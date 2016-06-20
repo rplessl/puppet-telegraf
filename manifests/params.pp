@@ -10,13 +10,13 @@
 #
 # === Copyright
 #
-# Copyright 2015 Roman Plessl, Plessl + Burkhardt GmbH
+# Copyright 2015-2016 Roman Plessl, Plessl + Burkhardt GmbH
 #
 class telegraf::params {
-
-  $ensure                    = 'installed'
-  $version                   = '0.12.1-1'
-  $install_from_repository   = true
+  $ensure                    = 'present'
+  $version                   = '0.13.1'
+  $download_package          = false
+  $manage_repo               = true
   $config_template           = 'telegraf/telegraf.conf.erb'
   $config_base_file          = '/etc/telegraf/telegraf.conf'
   $config_directory          = '/etc/telegraf/telegraf.d'
@@ -37,12 +37,12 @@ class telegraf::params {
   $agent_flush_interval      = '10s'
 
   # [[plugins.cpu]]
-  $cpu_percpu                 = true
-  $cpu_totalcpu               = true
-  $cpu_drop                   = ['time_*']
+  $cpu_percpu                = true
+  $cpu_totalcpu              = true
+  $cpu_drop                  = ['time_*']
 
   # [[plugins.disk]]
   # The default value for this is NO value.
-  #$disk_mountpoints
+  $disk_mountpoints          = undef
 
 }

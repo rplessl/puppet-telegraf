@@ -1,8 +1,8 @@
-# == Class: telegraf::plugins
+# == Class: telegraf::plugins::inputs
 #
 # Internal class.
 #
-# Configures plugins for telegraf
+# Configures inputs plugins for telegraf
 #
 # === Authors
 #
@@ -12,6 +12,6 @@
 #
 # Copyright 2015-2016 Roman Plessl, Plessl + Burkhardt GmbH
 #
-class telegraf::plugins {
+class telegraf::plugins::inputs {
 
 }
