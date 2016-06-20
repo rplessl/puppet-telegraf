@@ -27,6 +27,8 @@ The module installs the telegraf package from the provided repositories and inst
 
 Supported Linux distributions are Debian based (Ubuntu, Debian) and RedHat based (CentOS, RHEL).
 
+Tests have also be run on an raspberry pi 2 with raspbian (jessie).
+
 ## Setup
 
 ### Setup Requirements
@@ -35,7 +37,7 @@ puppet-telegraf requires these third party puppet modules
 
   * [puppet-stdlibs](https://github.com/puppetlabs/puppetlabs-stdlib)
   * [wget](https://forge.puppetlabs.com/maestrodev/wget) module when the parameter `install_from_repository` is set to false.
-  * [apt](https://github.com/puppetlabs/puppetlabs-apt (on Debian / Ubuntu)
+  * [apt](https://github.com/puppetlabs/puppetlabs-apt) (on Debian / Ubuntu)
 
 ### Beginning with telegraf
 
