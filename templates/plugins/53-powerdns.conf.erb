@@ -1,0 +1,13 @@
+# THIS FILE IS MANAGED BY PUPPET (created by telegraf::plugins::powerdns)
+
+###############################################################################
+#                             PLUGIN POWERDNS                                 #
+###############################################################################
+
+# Read metrics from powerdns
+[[inputs.powerdns]]
+  # An array of sockets to gather stats about.
+  # Specify a path to unix socket.
+  #
+  # If no servers are specified, then '/var/run/pdns.controlsocket' is used as the path.
+  unix_sockets = ["<%= @socket %>"]
