@@ -1,4 +1,4 @@
-class {
-  'telegraf':
-    install_from_repository => false;
+class { '::telegraf':
+  download_package => false,
+  manage_repo      => false,
 }

@@ -1,8 +1,0 @@
-FORGE
-  remote: https://forgeapi.puppetlabs.com
-  specs:
-    maestrodev-wget (1.7.3)
-
-DEPENDENCIES
-  maestrodev-wget (>= 1.6.0)
-

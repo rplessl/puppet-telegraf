@@ -1,6 +1,9 @@
-## v0.13.1 [2015-06-xx]
+## v0.13.1 [2015-06-xx] -- Unreleased
 
 * Enhanced for working with telegraf 0.13.x -- @thirdeyenick and @rplessl
+* Refactoring plugin system (Closes #23) -- @rplessl
+* Documenation love to document the last current state (Closes #24) -- @rplessl
+* Added apt / yum repository handling (Closes #14) -- @rplessl
 
 ## v0.2.4 [2015-12-25]
 

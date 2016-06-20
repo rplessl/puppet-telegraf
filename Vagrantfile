@@ -30,7 +30,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
   end
 
-  config.vm.define "debian", autostart: false do |debian|
+  config.vm.define "wheezy", autostart: false do |wheezy|
     debian.vm.box = "puppetlabs/debian-7.8-64-puppet"
     debian.vm.provision :puppet do |puppet|
       puppet.manifests_path = "tests"
@@ -39,8 +39,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
   end
 
-  config.vm.define "debian8", autostart: false do |debian8|
-    debian.vm.box = "debian-8.0-jessie-64-shrinked-puppet"
+  config.vm.define "jessie", autostart: false do |jessie|
+    debian.vm.box = "puppetlabs/debian-8.2-64-puppet"
     debian.vm.provision :puppet do |puppet|
       puppet.manifests_path = "tests"
       puppet.manifest_file  = "vagrant.pp"
@@ -58,7 +58,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   config.vm.define "centos7", autostart: false do |centos7|
-    centos7.vm.box = "puppetlabs/centos-7.0-64-puppet"
+    centos7.vm.box = "puppetlabs/centos-7.2-64-puppet"
     centos7.vm.provision :puppet do |puppet|
       puppet.manifests_path = "tests"
       puppet.manifest_file  = "vagrant.pp"
