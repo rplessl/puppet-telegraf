@@ -116,9 +116,9 @@
   #
   # By default, telegraf gather stats for all mountpoints.
   # Setting mountpoints will restrict the stats to the specified mountpoints.
-<% if scope['::telegraf::disk_mountpoints'].any? %>
+<% if scope['::telegraf::disk_mountpoints'] -%>
   Mountpoints = <%= scope['::telegraf::disk_mountpoints'].inspect %>
-<% end %>
+<% end -%>
   # Ignore some mountpoints by filesystem type. For example (dev)tmpfs (usually
   # present on /run, /var/run, /dev/shm or /dev).
   ignore_fs = ["tmpfs", "devtmpfs"]
