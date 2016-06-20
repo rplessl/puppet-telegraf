@@ -7,6 +7,7 @@ describe 'telegraf' do
     describe "testing telegraf class without any parameters on RedHat" do
       let(:params) {{ }}
       let(:facts) {{
+        :operatingsystem => 'redhat',
         :osfamily => 'redhat',
       }}
 
@@ -28,9 +29,10 @@ describe 'telegraf' do
       describe "testing telegraf class without any parameters on #{lsbdistcodename}" do
         let(:params) {{ }}
         let(:facts) {{
-          :osfamily => 'debian',
-          :lsbdistid => 'ubuntu',
           :lsbdistcodename => lsbdistcodename,
+          :lsbdistid => 'ubuntu',
+          :operatingsystem => 'debian',
+          :osfamily => 'debian',
         }}
 
         it { is_expected.to compile.with_all_deps }
@@ -52,9 +54,10 @@ describe 'telegraf' do
       describe "testing telegraf class without any parameters on #{lsbdistcodename}" do
         let(:params) {{ }}
         let(:facts) {{
-          :osfamily => 'debian',
-          :lsbdistid => 'raspbian',
           :lsbdistcodename => lsbdistcodename,
+          :lsbdistid => 'raspbian',
+          :operatingsystem => 'debian',
+          :osfamily => 'debian',
         }}
 
         it { is_expected.to compile.with_all_deps }
@@ -77,6 +80,7 @@ describe 'telegraf' do
     describe 'telegraf class without any parameters on Solaris' do
       let(:facts) {{
         :osfamily => 'Solaris',
+        :operatingsystem => 'Solaris',
       }}
 
       it { expect { should contain_package('telegraf') }.to raise_error(Puppet::Error, /Telegraf not supported on Solaris/) }
@@ -87,6 +91,7 @@ describe 'telegraf' do
     let(:params) {{ }}
     let(:facts) {{
       :osfamily => 'debian',
+      :operatingsystem => 'debian',
       :lsbdistid => 'ubuntu',
       :lsbdistcodename => 'trusty',
     }}
@@ -99,6 +104,7 @@ describe 'telegraf' do
     let(:params) {{ }}
     let(:facts) {{
       :osfamily => 'debian',
+      :operatingsystem => 'debian',
       :lsbdistid => 'ubuntu',
       :lsbdistcodename => 'trusty',
     }}
