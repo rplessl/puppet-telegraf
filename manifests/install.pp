@@ -78,7 +78,7 @@ class telegraf::install {
         apt::source { 'influxdata':
           comment  => 'Mirror for InfluxData packages',
           location => "https://repos.influxdata.com/${_operatingsystem}",
-          release  => $::distcodename,
+          release  => $::lsbdistcodename,
           repos    => 'stable',
           key      => {
             'id'     => '05CE15085FC09D18E99EFB22684A14CF2582E0C5',
