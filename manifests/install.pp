@@ -65,7 +65,7 @@ class telegraf::install {
         }
       }
       default: {
-        fail("OS family ${::osfamily} not supported - Only Debian/Ubuntu and RedHat/Centos are supported at this time")
+        fail("Telegraf not supported on ${::osfamily} - Only Debian/Ubuntu and RedHat/Centos are supported at this time")
       }
     }
   }
@@ -99,7 +99,7 @@ class telegraf::install {
         Yumrepo['influxdata'] -> Package['telegraf']
       }
       default: {
-        fail("OS family ${::osfamily} not supported - Only Debian/Ubuntu and RedHat/Centos are supported at this time")
+        fail("Telegraf not supported on ${::osfamily}- Only Debian/Ubuntu and RedHat/Centos are supported at this time")
       }
     }
     ensure_packages(['telegraf'], { ensure =>  $ensure_version })
