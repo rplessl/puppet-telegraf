@@ -4,10 +4,11 @@
 #
 # === Authors
 #
-# Sebastian Nickel <nick@nine.ch>
+# Nick (github.com/thirdeyenick)
+#
 # === Copyright
 #
-# Copyright 2015 Roman Plessl, Plessl + Burkhardt GmbH
+# Copyright 2016 Nine Internet Solutions AG
 #
 class telegraf::cleanup {
 

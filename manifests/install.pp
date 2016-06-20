@@ -66,11 +66,19 @@ class telegraf::install {
         fail("OS family ${::osfamily} not supported")
       }
     }
-  }
-  else {
+  } else {
+    # make sure the specific version is installed
+    if $my_package_ensure =~ /present|installed/ {
+      $ensure_version = $::telegraf::version ? {
+        undef   => $my_package_ensure,
+        default => $::telegraf::version,
+      }
+    } else {
+      $ensure_version = $my_package_ensure
+    }
     # install / purge the package
     package { 'telegraf':
-      ensure => $my_package_ensure,
+      ensure => $ensure_version,
     }
   }
 }
