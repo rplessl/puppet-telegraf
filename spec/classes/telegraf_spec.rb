@@ -8,8 +8,8 @@ describe 'telegraf' do
       let(:params) {{ }}
       let(:facts) {{
         :architecture              => 'amd64',
-        :lsbdistcodename           => 'Maipo',
         :lsbdistid                 => 'RedHatEnterpriseServer',
+        :lsbdistcodename           => 'Maipo',
         :operatingsystem           => 'redhat',
         :operatingsystemmajrelease => '7',
         :osfamily                  => 'redhat',
@@ -33,8 +33,8 @@ describe 'telegraf' do
       let(:params) {{ }}
       let(:facts) {{
         :architecture              => 'amd64',
-        :lsbdistcodename           => 'trusty',
         :lsbdistid                 => 'ubuntu',
+        :lsbdistcodename           => 'trusty',
         :operatingsystem           => 'debian',
         :operatingsystemmajrelease => '14.04',
         :osfamily                  => 'debian',
@@ -58,8 +58,8 @@ describe 'telegraf' do
       let(:params) {{ }}
       let(:facts) {{
         :architecture              => 'amd64',
-        :lsbdistcodename           => 'xenial',
         :operatingsystemmajrelease => '16.04',
+        :lsbdistcodename           => 'xenial',
         :lsbdistid                 => 'ubuntu',
         :operatingsystem           => 'debian',
         :osfamily                  => 'debian',
@@ -79,12 +79,12 @@ describe 'telegraf' do
       it { is_expected.to contain_class('telegraf') }
     end
 
-    describe "testing telegraf class without any parameters on #{lsbdistcodename}" do
+    describe "testing telegraf class without any parameters on raspbian jessie on raspi 2" do
       let(:params) {{ }}
       let(:facts) {{
         :architecture              => 'armv7l',
-        :lsbdistcodename           => 'jessie',
         :lsbdistid                 => 'raspbian',
+        :lsbdistcodename           => 'jessie',
         :operatingsystem           => 'debian',
         :operatingsystemmajrelease => '8',
         :osfamily                  => 'debian',
@@ -120,9 +120,9 @@ describe 'telegraf' do
     let(:params) {{ }}
     let(:facts) {{
         :architecture              => 'amd64',
-        :lsbdistcodename           => 'trusty',
         :operatingsystemmajrelease => '14.04',
         :lsbdistid                 => 'ubuntu',
+        :lsbdistcodename           => 'trusty',
         :operatingsystem           => 'debian',
         :osfamily                  => 'debian',
     }}
@@ -135,8 +135,8 @@ describe 'telegraf' do
     let(:params) {{ }}
     let(:facts) {{
         :architecture              => 'amd64',
-        :lsbdistcodename           => 'trusty',
         :operatingsystemmajrelease => '14.04',
+        :lsbdistcodename           => 'trusty',
         :lsbdistid                 => 'ubuntu',
         :operatingsystem           => 'debian',
         :osfamily                  => 'debian',
