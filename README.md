@@ -1,6 +1,6 @@
 ## Overview
 [![Build Status](https://travis-ci.org/rplessl/puppet-telegraf.svg?branch=master)](https://travis-ci.org/rplessl/puppet-telegraf?branch=master)
-[![rplessl-telegraf](https://img.shields.io/puppetforge/r/rplessl/telegraf.svg)](https://forge.puppetlabs.com/rplessl/telegraf)
+[![rplessl-telegraf](https://img.shields.io/puppetforge/v/rplessl/telegraf.svg)](https://forge.puppetlabs.com/rplessl/telegraf)
 
 This puppet module installs and manages the configuration of [InfluxData's Telegraf](https://github.com/influxdata/telegraf). A metrics collection agent.
 
