@@ -36,8 +36,9 @@ Tests have also be run on an raspberry pi 2 with raspbian (jessie).
 puppet-telegraf requires these third party puppet modules
 
   * [puppet-stdlibs](https://github.com/puppetlabs/puppetlabs-stdlib)
-  * [wget](https://forge.puppetlabs.com/maestrodev/wget) module when the parameter `install_from_repository` is set to false.
-  * [apt](https://github.com/puppetlabs/puppetlabs-apt) (on Debian / Ubuntu)
+  * [wget](https://forge.puppetlabs.com/maestrodev/wget) module when the parameter `download_package` is set to true.
+  * [apt](https://github.com/puppetlabs/puppetlabs-apt) module when the 
+  parameter `manage_repo` is set to true on Debian or Ubuntu.
 
 ### Beginning with telegraf
 
@@ -94,7 +95,7 @@ class { '::telegraf':
     cpu_drop                  => ["cpu_time"],
 
     # [[plugins.disk]]
-    disk_mountpoints           = ["/","/home"],
+    disk_mountpoints          => ["/","/home"],
 }
 ```
 

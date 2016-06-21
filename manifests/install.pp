@@ -85,7 +85,7 @@ class telegraf::install {
             'source' => 'https://repos.influxdata.com/influxdb.key',
           },
         }
-        ensure_packages(['apt-transport-https'])
+        ensure_packages(['apt-transport-https'], { before => Class['apt::update'] }) 
         Class['apt::update'] -> Package['telegraf']
       }
       'redhat': {
