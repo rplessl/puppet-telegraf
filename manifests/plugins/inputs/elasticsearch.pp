@@ -17,8 +17,8 @@
 #
 # Copyright 2015 Asthon Davis
 #
-class telegraf::plugins::elasticsearch (
-  $servers          = ["http://localhost:9200"],
+class telegraf::plugins::inputs::elasticsearch (
+  $servers          = ['http://localhost:9200'],
   $cluster_health   = true,
   $local            = true,
 ){

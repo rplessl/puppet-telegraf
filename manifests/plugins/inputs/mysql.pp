@@ -16,7 +16,7 @@
 #
 # Copyright 2015 Roman Plessl, Plessl + Burkhardt GmbH
 #
-class telegraf::plugins::mysql (
+class telegraf::plugins::inputs::mysql (
   # [mysql] section of telegraf.conf
 )
 {

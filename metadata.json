@@ -1,6 +1,6 @@
 {
   "name": "rplessl-telegraf",
-  "version": "0.13.1",
+  "version": "0.13.2",
   "source": "https://github.com/rplessl/puppet-telegraf",
   "author": "Roman Plessl",
   "license": "MIT",

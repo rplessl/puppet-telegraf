@@ -33,7 +33,7 @@
 #
 # === Examples
 #
-#  telegraf::plugins::procstat {
+#  telegraf::plugins::inputs::procstat {
 #    'mysql':
 #      pid_file => '/var/run/mysqld/mysqld.pid';
 #  }
@@ -46,7 +46,7 @@
 #
 # Copyright 2016 Nine Internet Solutions AG
 #
-define telegraf::plugins::procstat (
+define telegraf::plugins::inputs::procstat (
   $pid_file   = undef,
   $exec_name  = undef,
   $pattern    = undef,

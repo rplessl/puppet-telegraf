@@ -16,7 +16,7 @@
 #
 # Copyright 2015 Roman Plessl, Plessl + Burkhardt GmbH
 #
-class telegraf::plugins::puppetagent (
+class telegraf::plugins::inputs::puppetagent (
   # [puppetagent] section of telegraf.conf
 ){
 

@@ -17,7 +17,7 @@
 #
 # Copyright 2015 Roman Plessl, Plessl + Burkhardt GmbH
 #
-class telegraf::plugins::postgresql (
+class telegraf::plugins::inputs::postgresql (
   # [postgresql] section of telegraf.conf
 ){
 
