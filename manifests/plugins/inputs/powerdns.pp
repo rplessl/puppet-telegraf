@@ -16,7 +16,7 @@
 #
 # Copyright 2016 Nine Internet Solutions AG
 #
-class telegraf::plugins::powerdns (
+class telegraf::plugins::inputs::powerdns (
   # [powerdns] section of telegraf.conf
   $socket = '/var/run/pdns.controlsocket'
 )
